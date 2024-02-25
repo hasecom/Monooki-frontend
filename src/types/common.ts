@@ -17,6 +17,9 @@ export type categoryLinkProps = {
 	category:categoryType[],
 	length?:number
 }
+export type CategoryListProps = {
+	category:categoryType[]
+}
 
 
 /* 
