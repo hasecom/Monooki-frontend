@@ -1,4 +1,4 @@
-import CategoryTags from "./widget/categoryTags";
+import CategoryTags from "../widget/categoryTags";
 const SideBar = () => {
 	return (
 		<>

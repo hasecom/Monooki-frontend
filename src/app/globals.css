@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.MuiPaper-elevation{
+  border: none !important;
+  box-shadow: none !important;
+}

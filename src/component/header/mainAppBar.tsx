@@ -8,9 +8,10 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { MainAppBarProps } from '@/types/common';
-import HamburgerButton from '../ui/button/hamburgerButton';
+import HamburgerButton from '../../ui/button/hamburgerButton';
 import MainAccordion from './mainAccordion';
-
+import { useCycle } from 'framer-motion';
+import SideDrawer from '../drawer/sideDrawer';
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
 	borderRadius: theme.shape.borderRadius,
@@ -51,9 +52,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 		},
 	},
 }));
-
-
 const MainAppBar:NextPage<MainAppBarProps> = (props) => {
+	//ハンバーガー
+	const [isOpen, toggleOpen] = useCycle(false, true);
+	const toggle = () => {
+		toggleOpen();
+	};
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" color="inherit">
@@ -77,11 +81,12 @@ const MainAppBar:NextPage<MainAppBarProps> = (props) => {
 						/>
 					</Search>
 					<Box sx={{ display: { xs: 'block', sm: 'none' },paddingLeft:1 }}>
-							<HamburgerButton isOpenSideBar={props.isOpenSideBar} />
+							<HamburgerButton isOpenSideBar={props.isOpenSideBar} isOpen={isOpen} toggle={toggle} />
 					</Box>
 				</Toolbar>
 				<MainAccordion />
 			</AppBar>
+			<SideDrawer isOpen={isOpen} toggle={toggle} />
 		</Box>
 	);
 }

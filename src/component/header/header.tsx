@@ -1,4 +1,4 @@
-import MainAppBar from "@/component/mainAppBar"
+import MainAppBar from "@/component/header/mainAppBar"
 
 const Header = () =>  {
 

@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import { LayoutProps } from "@/types/common";
-import Header from "@/component/header";
+import Header from "@/component/header/header";
 import { Container, Grid } from "@mui/material";
-import SideBar from "@/component/sideBar";
+import SideBar from "@/component/sideBar/sideBar";
 import { Box } from "@mui/system";
 
 const MainLayout: NextPage<LayoutProps> = ({ children }) => {

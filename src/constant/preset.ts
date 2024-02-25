@@ -17,7 +17,7 @@ export const categoryContents = [
 	{ name: 'PC' }
 ]
 export const purposeContents = [
-	{name:'アプリが起動しない'},
+	{name:'アプリが起動しないよおおおお'},
 	{name:'退会したい'},
 	{name:'会員登録したい'},
 	{name:'スマホが起動しない'}

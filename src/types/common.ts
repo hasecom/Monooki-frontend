@@ -29,10 +29,13 @@ export type MainAppBarProps = {
 	isOpenSideBar:boolean
 }
 export type HamburgerButtonProps = {
-  // relevantEvent?: () => void;
-  isOpenSideBar: boolean;
-};
+  isOpenSideBar: boolean,
 
+};
+export type SideDrawerProps = {
+	isOpen:boolean,
+	toggle:()=>void
+}
 /* 
 ########
 mediaQuery
