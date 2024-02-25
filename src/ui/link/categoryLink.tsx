@@ -2,7 +2,6 @@ import { Box } from "@mui/material"
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { categoryLinkProps } from "@/types/common";
 import { NextPage } from "next";
-
 const CategoryLink:NextPage<categoryLinkProps> = ({category,length = 10}) => {
 	return (
 		<Box>

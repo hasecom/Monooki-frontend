@@ -33,3 +33,11 @@ export type HamburgerButtonProps = {
   // relevantEvent?: () => void;
   isOpenSideBar: boolean;
 };
+
+/* 
+########
+mediaQuery
+########
+*/
+export type MediaQueryBreakPointType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type MediaQueryDirection = 'up' | 'down' | 'only';

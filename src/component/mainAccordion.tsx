@@ -3,10 +3,13 @@ import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { Tabs } from '@mui/material';
 import { CategoryLink } from '@/ui/link/categoryLink';
+import { isScreenSizeAbove } from "@/util/mediaQuery";
+import { Heading,categoryContents,purposeContents } from '@/constant/preset';
 
 const MainAccordion = () => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);
+	if(!isScreenSizeAbove('sm'))return (<></>);//スマホサイズは非表示
 
 	const handleMouseEnter = (num: number) => {
 		setSelectedTab(num);
@@ -38,11 +41,15 @@ const MainAccordion = () => {
 		<Box onMouseLeave={() => { handleMouseLeave() }}>
 			<Tabs
 				value={isHovered ? selectedTab : false}
-				textColor="primary"
+				TabIndicatorProps={{
+					style: {
+						backgroundColor: "#b2bec3"
+					}
+				}}
 			>
-				<NavTab label="カテゴリから探す" num={0} />
-				<NavTab label="目的から探す" num={1} />
-				<NavTab label="サービスについて" num={2} />
+				<NavTab label={Heading.Category.CategorySearch} num={0} />
+				<NavTab label={Heading.Category.PurposeSearch} num={1} />
+				<NavTab label={Heading.Common.AboutService} num={2} />
 				<LinkTab label="Page One" link={'https://app.hasethblog.com'} />
 			</Tabs>
 			{isHovered && selectedTab === 0 && (
@@ -59,21 +66,4 @@ const MainAccordion = () => {
 	);
 };
 
-
 export default MainAccordion;
-
-
-const categoryContents = [
-	{ name: 'LINE' },
-	{ name: 'X' },
-	{ name: 'Youtube' },
-	{ name: 'Instagram' },
-	{ name: 'スマホ' },
-	{ name: 'PC' }
-]
-const purposeContents = [
-	{name:'アプリが起動しない'},
-	{name:'退会したい'},
-	{name:'会員登録したい'},
-	{name:'スマホが起動しない'}
-]
