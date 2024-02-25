@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import {CategoryTagsTitle} from '@/ui/text/title';
-import { CategoryTagChips } from "@/ui/chip/chip";
+import { CategoryTagChip } from "@/ui/chip/chip";
 const CategoryTags = () => {
 	return (
 		<Box sx={{paddingY:1,paddingX:1}}>
 			<CategoryTagsTitle >定番のキーワード</CategoryTagsTitle>
 			{
 			categoryTagsData.map((tag,index)=>(
-				<CategoryTagChips key={index} label={tag.name} />
+				<CategoryTagChip key={index} label={tag.name} />
 			))
 		}
 		</Box>

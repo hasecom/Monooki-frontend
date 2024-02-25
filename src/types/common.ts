@@ -5,6 +5,20 @@ export type LayoutProps  = {
 }
 
 
+/*
+#######
+カテゴリ&目的
+#######
+*/
+export type categoryType = {
+	name:string
+}
+export type categoryLinkProps = {
+	category:categoryType[],
+	length?:number
+}
+
+
 /* 
 ########
 UI
