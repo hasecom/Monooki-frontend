@@ -1,6 +1,7 @@
-import { Box } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { categoryLinkProps } from "@/types/common";
+import { CategoryGridPapers } from "../paper/paper";
 import { NextPage } from "next";
 const CategoryLink:NextPage<categoryLinkProps> = ({category,length = 10}) => {
 	return (
@@ -17,4 +18,16 @@ const CategoryLink:NextPage<categoryLinkProps> = ({category,length = 10}) => {
 		</Box>
 	)
 }
-export {CategoryLink}
+const CategoryPaperLink:NextPage<categoryLinkProps> = ({category,length = 9}) => {
+	return (
+		<>
+		<CategoryGridPapers category={category} length={length} />
+		<Box sx={{textAlign:'right',paddingY:2, color: '#636e72' }}>
+				<Typography variant="subtitle2">
+					すべてを見る<KeyboardArrowRightIcon />
+				</Typography>
+		</Box>
+		</>
+	)
+}
+export {CategoryLink,CategoryPaperLink}

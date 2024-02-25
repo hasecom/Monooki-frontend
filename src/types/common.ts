@@ -28,7 +28,6 @@ export type ReactNodeProp = {children:ReactNode};
 export type MainAppBarProps = {
 	isOpenSideBar:boolean
 }
-
 export type HamburgerButtonProps = {
   // relevantEvent?: () => void;
   isOpenSideBar: boolean;
