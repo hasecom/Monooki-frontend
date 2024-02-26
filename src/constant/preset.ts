@@ -22,3 +22,8 @@ export const purposeContents = [
 	{name:'会員登録したい'},
 	{name:'スマホが起動しない'}
 ]
+export const recipes = [
+	{id:1000},
+	{id:2000},
+	{id:3000},
+]

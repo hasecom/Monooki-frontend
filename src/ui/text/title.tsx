@@ -6,4 +6,9 @@ const CategoryTagsTitle:NextPage<ReactNodeProp> = ({children}) => {
 		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
 	)
 }
-export {CategoryTagsTitle}
+const CategoryTitle:NextPage<ReactNodeProp> = ({children}) => {
+	return (
+		<Typography variant="subtitle1" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
+	)
+}
+export {CategoryTagsTitle,CategoryTitle}
