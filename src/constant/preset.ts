@@ -23,6 +23,7 @@ export const purposeContents = [
 	{name:'スマホが起動しない'}
 ]
 export const recipes = [
+	{id:4},
 	{id:1000},
 	{id:2000},
 	{id:3000},

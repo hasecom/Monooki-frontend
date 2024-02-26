@@ -3,7 +3,19 @@ import { ReactNode } from "react"
 export type LayoutProps  = {
 	children:ReactNode
 }
-
+/*
+レシピ
+*/
+export type RecipesType = {
+	id:string,
+	name:string,
+	content:string[],
+	videoUrl:string,
+	thumbnailUrl:string
+}
+export type getRecipeProps = {
+	recipes:RecipesType[]
+}
 
 /*
 #######
@@ -20,7 +32,6 @@ export type categoryLinkProps = {
 export type CategoryListProps = {
 	category:categoryType[]
 }
-
 
 /* 
 ########

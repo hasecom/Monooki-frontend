@@ -1,23 +1,16 @@
 import { recipes } from "@/constant/preset";
 import { NextPage } from "next";
-
+import { getRecipe } from "@/util/getRecipe";
 type RecipeProps = {
 	params:{
 		id:string
 	}
 }
-
-export async function getRecipe() {
-   const res = await fetch("https://raw.githubusercontent.com/hasecom/test-md/main/3.json");
-  return res.json();
-}
-
 const Recipe:NextPage<RecipeProps> = async(props) => {
-	const { results } = await getRecipe();
-
+	const { recipes }  = await getRecipe(props.params.id);
 	return (
 		<>
-		     {results.map(({ name }, i) => (
+		  {recipes.map(({ name }, i) => (
 					<>{name}</>
         ))}
 		{props.params.id}
