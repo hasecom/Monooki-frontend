@@ -14,7 +14,7 @@ const MainLayout: NextPage<LayoutProps> = ({ children }) => {
 					height:'100vh'
 				}}>
 					<Grid item xs={12} md={9}>
-						<Box sx={{paddingX:"3vw",paddingY:"3vh"}}>
+						<Box>
 							{children}
 						</Box>
 					</Grid>
