@@ -1,3 +1,4 @@
+'use client'
 import { NextPage } from 'next';
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
@@ -59,8 +60,7 @@ const MainAppBar:NextPage<MainAppBarProps> = (props) => {
 		toggleOpen();
 	};
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="static" color="inherit">
+			<AppBar position="sticky" color="inherit" >
 				<Toolbar>
 					<Typography
 						variant="h6"
@@ -85,9 +85,8 @@ const MainAppBar:NextPage<MainAppBarProps> = (props) => {
 					</Box>
 				</Toolbar>
 				<MainAccordion />
+				<SideDrawer isOpen={isOpen} toggle={toggle} />
 			</AppBar>
-			<SideDrawer isOpen={isOpen} toggle={toggle} />
-		</Box>
 	);
 }
 

@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
 import { CategoryListProps } from "@/types/common";
 import { CategoryTitle } from "@/ui/text/title";
-import { Box } from "@mui/material";
 
 const CategoryList: NextPage<CategoryListProps> = (props) => {
 	(props.category).forEach((category) => {

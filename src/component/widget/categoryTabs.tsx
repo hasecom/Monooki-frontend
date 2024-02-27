@@ -1,3 +1,4 @@
+'use client'
 import { useState } from "react";
 import { Tab } from "@mui/material"
 import { TabPanel, TabContext,TabList } from '@mui/lab';
@@ -13,11 +14,11 @@ const CategoryTabs = () => {
 	if(isScreenSizeAbove('sm'))return (<></>);//スマホサイズは非表示
 	return (
 		<>
-			<TabContext value={value}>
+			<TabContext value={value} >
 					<TabList onChange={handleChange} aria-label="categoryLabel" centered variant='fullWidth' textColor='inherit' 
 					 TabIndicatorProps={{
 						style: {
-							backgroundColor: "#b2bec3"
+							backgroundColor: "#b2bec3",
 						}
 					}}>
 						<Tab label={Heading.Category.CategorySearch} value="1" />

@@ -6,7 +6,7 @@ export type LayoutProps  = {
 /*
 レシピ
 */
-export type RecipesType = {
+export type RecipeType = {
 	id:string,
 	name:string,
 	content:string[],
@@ -14,7 +14,10 @@ export type RecipesType = {
 	thumbnailUrl:string
 }
 export type getRecipeProps = {
-	recipes:RecipesType[]
+	recipe:RecipeType
+}
+export type RecipeGroupProps = {
+	recipe:RecipeType
 }
 
 /*

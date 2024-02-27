@@ -1,3 +1,4 @@
+'use client'
 import { NextPage } from "next";
 import { LayoutProps } from "@/types/common";
 import Header from "@/component/header/header";
