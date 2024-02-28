@@ -7,3 +7,17 @@
   border: none !important;
   box-shadow: none !important;
 }
+
+/* stepper */
+.MuiStepIcon-root {
+	color:#bab8ac;
+}
+.MuiStepIcon-text{
+	fill:#fff;
+	font-weight:bolder;
+}
+.MuiStepLabel-label{
+	font-weight: 600;
+	color:black;
+	font-size: 1.1rem;
+}

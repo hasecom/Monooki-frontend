@@ -9,7 +9,6 @@ const CategoryList: NextPage<CategoryListProps> = (props) => {
 	});
 	return (
 			<>
-			
 				{(props.category).map((category, index) => (
 				<Grid container spacing={0} sx={{my:2}} key={index}>
 					<Grid item xs={12} md={2}>

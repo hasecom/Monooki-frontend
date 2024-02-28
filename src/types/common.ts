@@ -3,20 +3,30 @@ import { ReactNode } from "react"
 export type LayoutProps  = {
 	children:ReactNode
 }
+export type mainLayoutOptionType = {
+	isBreadCrumbs?:boolean
+}
 /*
 レシピ
 */
 export type RecipeType = {
 	id:string,
 	name:string,
-	content:string[],
+	content:RecipeContentType[],
 	videoUrl:string,
 	thumbnailUrl:string
+}
+export type RecipeContentType = {
+	label:string,
+	description:string
 }
 export type getRecipeProps = {
 	recipe:RecipeType
 }
 export type RecipeGroupProps = {
+	recipe:RecipeType
+}
+export type RecipeFlowProps = {
 	recipe:RecipeType
 }
 

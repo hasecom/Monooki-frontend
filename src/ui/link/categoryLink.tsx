@@ -5,7 +5,7 @@ import { CategoryGridPapers } from "../paper/paper";
 import { NextPage } from "next";
 const CategoryLink:NextPage<categoryLinkProps> = ({category,length = 10}) => {
 	return (
-		<Box>
+		<Box sx={{boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'}}>
 			{category.slice(0, length).map((item, index) => (
 				<Box key={index} sx={{ display: 'inline-block', paddingX: 2, paddingY: 2 }}>
 					{item.name}

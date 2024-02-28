@@ -13,7 +13,8 @@ const CategoryTitle:NextPage<ReactNodeProp> = ({children}) => {
 }
 const RecipeTitle:NextPage<ReactNodeProp> = ({children}) => {
 	return (
-		<Typography variant="h5" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
+		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
 	)
 }
+
 export {CategoryTagsTitle,CategoryTitle,RecipeTitle}

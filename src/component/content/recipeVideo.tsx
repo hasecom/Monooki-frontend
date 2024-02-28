@@ -5,7 +5,7 @@ import { getWindowSize } from "@/hooks/getWindowSize";
 const RecipeVideo = () => {
 	const { height, width } = getWindowSize();
 	return (
-		<>{height}{width}
+		<>
 			<Box sx={{ maxWidth: '560px', maxHeight: '560px',minWidth:"250px",minHeight:'250px' }}>
 				<iframe 
 					width={isScreenSizeAbove('sm')? "560" : width } 

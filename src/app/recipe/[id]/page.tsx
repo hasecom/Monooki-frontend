@@ -13,10 +13,6 @@ const Recipe: NextPage<RecipeProps> = async (props) => {
 	return (
 		<>
 				<RecipeGroup recipe={recipe} />
-				{/* {recipe.map(({ name }, i) => (
-					<>{name}</> 
-				))} */}
-				{props.params.id}
 		</>
 	)
 }

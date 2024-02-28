@@ -68,7 +68,7 @@ const MainAppBar:NextPage<MainAppBarProps> = (props) => {
 						component="div"
 						sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
 					>
-						Monoshiri
+						MONOOKI
 					</Typography>
 					<Search>
 						<SearchIconWrapper sx={{zIndex:10}}>
