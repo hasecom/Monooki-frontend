@@ -4,5 +4,10 @@ const CategoryTagChip= ({label}:{label:string}) => {
 		<Chip label={label} sx={{marginRight:1,marginBottom:1}} />
 	)
 }
+const CategoryTagOfRecipe = ({label}:{label:string}) => {
+	return (
+		<Chip label={label} sx={{marginRight:1,marginBottom:1}} />
+	)
+}
 
-export {CategoryTagChip}
+export {CategoryTagChip,CategoryTagOfRecipe}

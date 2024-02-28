@@ -11,10 +11,15 @@ const CategoryTitle:NextPage<ReactNodeProp> = ({children}) => {
 		<Typography variant="subtitle1" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
 	)
 }
-const RecipeTitle:NextPage<ReactNodeProp> = ({children}) => {
+const RecipeFlowHeading:NextPage<ReactNodeProp> = ({children}) => {
 	return (
 		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
 	)
 }
+const RecipeHeading:NextPage<ReactNodeProp> = ({children}) => {
+	return (
+		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2,fontSize:'1.25rem'}}>{children}</Typography>
+	)
+}
 
-export {CategoryTagsTitle,CategoryTitle,RecipeTitle}
+export {CategoryTagsTitle,CategoryTitle,RecipeHeading,RecipeFlowHeading}

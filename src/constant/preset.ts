@@ -27,4 +27,5 @@ export const recipes = [
 	{id:1000},
 	{id:2000},
 	{id:3000},
+	{id:4000},
 ]

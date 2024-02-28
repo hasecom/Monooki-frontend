@@ -12,9 +12,12 @@ export type mainLayoutOptionType = {
 export type RecipeType = {
 	id:string,
 	name:string,
+	introduction:string,
 	content:RecipeContentType[],
 	videoUrl:string,
-	thumbnailUrl:string
+	thumbnailUrl:string,
+	remark:string
+
 }
 export type RecipeContentType = {
 	label:string,

@@ -13,11 +13,11 @@ const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children,isB
 	return (
 		<>
 			<Header />
-			{isBreadCrumbs && (
+			{isBreadCrumbs && isScreenSizeAboveSm && (
 				<BasicBreadCrumbs />
 			)}
 			<Grid container spacing={0} direction="row" sx={{
-				height: '100vh',
+				height: 'auto',
 				maxWidth: '1000px',
 				margin:'0 auto',
 				paddingTop:isScreenSizeAboveSm?'40px':'0'
@@ -29,6 +29,9 @@ const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children,isB
 						<SideBar />
 					</Grid>
 			</Grid>
+			{isBreadCrumbs && !isScreenSizeAboveSm && (
+				<BasicBreadCrumbs />
+			)}
 		</>
 	)
 }
