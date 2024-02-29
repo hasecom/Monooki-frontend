@@ -5,6 +5,10 @@ export const Heading = {
 	},
 	Common:{
 		AboutService:"サービスについて"
+	},
+	Footer:{
+		CategoryList:"カテゴリ一覧",
+		AboutService:"サービスについて"
 	}
 }
 
@@ -29,3 +33,21 @@ export const recipes = [
 	{id:3000},
 	{id:4000},
 ]
+
+export const constantLink = [
+	{id:1,label:'プライバシーポリシー'},
+	{id:2,label:'利用規約'},
+	{id:3,label:'運営'},
+	{id:4,label:'サービスに関してのお問い合わせ'},
+]
+export const footerCategoryLinks = [
+	{
+		label:'カテゴリから探す',
+		link:''
+	},
+	{
+		label:'目的から探す',
+		link:''
+	}
+]
+export const credit = '© 2024 MONOOKI All rights reserved.'

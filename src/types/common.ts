@@ -32,7 +32,15 @@ export type RecipeGroupProps = {
 export type RecipeFlowProps = {
 	recipe:RecipeType
 }
-
+/*
+#######
+フッター
+#######
+*/
+export type constantLinkType = {
+	id:string,
+	label:string
+}
 /*
 #######
 カテゴリ&目的

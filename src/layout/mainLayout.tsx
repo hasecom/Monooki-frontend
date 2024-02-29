@@ -2,6 +2,7 @@
 import { NextPage } from "next";
 import { LayoutProps,mainLayoutOptionType } from "@/types/common";
 import Header from "@/component/header/header";
+import Footer from "@/component/footer/footer";
 import { Grid } from "@mui/material";
 import SideBar from "@/component/sideBar/sideBar";
 import { Box } from "@mui/system";
@@ -32,6 +33,7 @@ const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children,isB
 			{isBreadCrumbs && !isScreenSizeAboveSm && (
 				<BasicBreadCrumbs />
 			)}
+			<Footer />
 		</>
 	)
 }
