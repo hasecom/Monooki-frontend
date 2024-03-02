@@ -38,8 +38,12 @@ export type RecipeFlowProps = {
 #######
 */
 export type constantLinkType = {
-	id:string,
+	id:number,
 	label:string
+}
+export type footerCategoryLinksType = {
+	label:string,
+	link:string
 }
 /*
 #######

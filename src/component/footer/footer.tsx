@@ -1,7 +1,8 @@
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 import { Box, Grid, List, ListItem, Typography, ListItemText } from "@mui/material";
 import { constantLink, credit, footerCategoryLinks, Heading } from "@/constant/preset";
-
+import { NextPage } from "next";
+import { constantLinkType,footerCategoryLinksType } from "@/types/common";
 const Footer = () => {
 	return (
 		<>
@@ -25,31 +26,29 @@ const PcFooter = () => {
 			paddingTop: '50px'
 		}}>
 			<Grid container spacing={2} justifyContent="center">
-				<Grid item xs={3}>
-
-				</Grid>
-				<Grid item xs={3}>
-					<Typography variant="body1" component="div" sx={{ paddingX: 2 }}>
-						{Heading.Footer.CategoryList}
-					</Typography>
-					<List>
-						{footerCategoryLinks.map((link, index) => (
-							<ListItem><ListItemText secondary={link.label} /></ListItem>
-						))}
-					</List>
-				</Grid>
-				<Grid item xs={3}>
-					<Typography variant="body1" component="div" sx={{ paddingX: 2 }}>
-						{Heading.Footer.AboutService}
-					</Typography>
-					<List>
-						{constantLink.map((link, index) => (
-							<ListItem><ListItemText secondary={link.label} /></ListItem>
-						))}
-					</List>
-				</Grid>
+				<Grid item xs={3}></Grid>
+				<PcFooterGrid headingText={Heading.Footer.AboutService} links={footerCategoryLinks} />
+				<PcFooterGrid headingText={Heading.Footer.AboutService} links={constantLink} />
 			</Grid>
 		</Box>
+	)
+}
+type PcFooterGridTypes = {
+	headingText:string,
+	links:constantLinkType[] | footerCategoryLinksType[]
+} 
+const PcFooterGrid:NextPage<PcFooterGridTypes> = ({headingText,links}) => {
+	return (
+		<Grid item xs={3}>
+			<Typography variant="body1" component="div" sx={{ paddingX: 2 }}>
+				{headingText}
+			</Typography>
+			<List>
+				{links.map((link, index) => (
+					<ListItem key={index}><ListItemText secondary={link.label} /></ListItem>
+				))}
+			</List>
+		</Grid>
 	)
 }
 
@@ -75,7 +74,6 @@ const SmFooter = () => {
 					<Typography variant="body2" sx={{ textAlign: 'center' }}>{credit}</Typography>
 				</Box>
 			</Box>
-
 		</Box>
 	)
 }
