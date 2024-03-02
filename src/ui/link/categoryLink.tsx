@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material"
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { categoryLinkProps } from "@/types/common";
+import { CategoryLinkProps } from "@/types/common";
 import { CategoryGridPapers } from "../paper/paper";
 import { NextPage } from "next";
-const CategoryLink:NextPage<categoryLinkProps> = ({category,length = 10}) => {
+const CategoryLink:NextPage<CategoryLinkProps> = ({category,length = 10}) => {
 	return (
 		<Box sx={{boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'}}>
 			{category.slice(0, length).map((item, index) => (
@@ -18,7 +18,7 @@ const CategoryLink:NextPage<categoryLinkProps> = ({category,length = 10}) => {
 		</Box>
 	)
 }
-const CategoryPaperLink:NextPage<categoryLinkProps> = ({category,length = 9}) => {
+const CategoryPaperLink:NextPage<CategoryLinkProps> = ({category,length = 9}) => {
 	return (
 		<>
 		<CategoryGridPapers category={category} length={length} />

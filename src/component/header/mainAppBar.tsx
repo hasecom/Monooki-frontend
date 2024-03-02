@@ -13,6 +13,8 @@ import HamburgerButton from '../../ui/button/hamburgerButton';
 import MainAccordion from './mainAccordion';
 import { useCycle } from 'framer-motion';
 import SideDrawer from '../drawer/sideDrawer';
+import { usePresetContext } from '@/provider/preSetProvider';
+
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
 	borderRadius: theme.shape.borderRadius,
@@ -54,6 +56,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 const MainAppBar:NextPage<MainAppBarProps> = (props) => {
+	const { category } = usePresetContext();
+	
 	//ハンバーガー
 	const [isOpen, toggleOpen] = useCycle(false, true);
 	const toggle = () => {
@@ -84,7 +88,7 @@ const MainAppBar:NextPage<MainAppBarProps> = (props) => {
 							<HamburgerButton isOpenSideBar={props.isOpenSideBar} isOpen={isOpen} toggle={toggle} />
 					</Box>
 				</Toolbar>
-				<MainAccordion />
+				<MainAccordion category={category.data} />
 				<SideDrawer isOpen={isOpen} toggle={toggle} />
 			</AppBar>
 	);

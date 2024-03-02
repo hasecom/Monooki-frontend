@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-
+import { CategoryType } from "./data"
 export type LayoutProps  = {
 	children:ReactNode
 }
@@ -62,8 +62,8 @@ export type footerCategoryLinksType = {
 export type categoryType = {
 	name:string
 }
-export type categoryLinkProps = {
-	category:categoryType[],
+export type CategoryLinkProps = {
+	category:CategoryType[],
 	length?:number
 }
 export type CategoryListProps = {

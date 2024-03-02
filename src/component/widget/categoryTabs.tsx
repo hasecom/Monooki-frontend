@@ -5,8 +5,12 @@ import { TabPanel, TabContext,TabList } from '@mui/lab';
 import { Heading } from "@/constant/preset";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 import { CategoryPaperLink } from "@/ui/link/categoryLink";
-import { categoryContents,purposeContents } from "@/constant/preset";
+import { usePresetContext } from "@/provider/preSetProvider";
+import { categoryFilterByClassName } from "@/util/categoryFormat";
+
 const CategoryTabs = () => {
+	const { category } = usePresetContext();
+	const filteredCategies = categoryFilterByClassName({categories:category.data,className:1})
 	const [value, setValue] = useState("1");
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		setValue(newValue);
@@ -25,10 +29,10 @@ const CategoryTabs = () => {
 						<Tab label={Heading.Category.PurposeSearch} value="2" />
 					</TabList>
 				<TabPanel value="1">
-					<CategoryPaperLink category={categoryContents}  />
+					<CategoryPaperLink category={filteredCategies}  />
 				</TabPanel>
 				<TabPanel value="2">
-				<CategoryPaperLink category={purposeContents}  />
+				<CategoryPaperLink category={filteredCategies}  />
 				</TabPanel>
 			</TabContext>
 		</>

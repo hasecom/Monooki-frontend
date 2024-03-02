@@ -1,7 +1,7 @@
 'use client'
 import { GetAllCategoryEndPoint } from '@/constant/preset';
 import { CategoryType } from '@/types/data';
-import useFetchData from '@/util/fetch';
+import useFetchData from '@/hooks/fetch';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { FetchDataResult } from '@/types/common';
 interface ContextType {

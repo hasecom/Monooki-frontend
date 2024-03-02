@@ -5,9 +5,15 @@ import Tab from '@mui/material/Tab';
 import { Tabs } from '@mui/material';
 import { CategoryLink } from '@/ui/link/categoryLink';
 import { isScreenSizeAbove } from "@/util/mediaQuery";
-import { Heading,categoryContents,purposeContents } from '@/constant/preset';
-
-const MainAccordion = () => {
+import { Heading } from '@/constant/preset';
+import { NextPage } from 'next';
+import { CategoryType } from '@/types/data';
+import { categoryFilterByClassName } from '@/util/categoryFormat';
+type MainAccordionProps = {
+	category:CategoryType[] | null
+}
+const MainAccordion:NextPage<MainAccordionProps> = ({category}) => {
+	const filteredCategies = categoryFilterByClassName({categories:category,className:2})
 	const [isHovered, setIsHovered] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);
 	if(!isScreenSizeAbove('sm'))return (<></>);//スマホサイズは非表示
@@ -55,12 +61,12 @@ const MainAccordion = () => {
 			</Tabs>
 			{isHovered && selectedTab === 0 && (
 				<>
-					<CategoryLink category={categoryContents}  />
+					<CategoryLink category={filteredCategies}  />
 				</>
 			)}
 			{isHovered && selectedTab === 1 && (
 				<>
-				<CategoryLink category={purposeContents}  />
+				<CategoryLink category={filteredCategies}  />
 				</>
 			)}
 		</Box>
