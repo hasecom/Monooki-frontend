@@ -51,3 +51,11 @@ export const footerCategoryLinks = [
 	}
 ]
 export const credit = '© 2024 MONOOKI All rights reserved.'
+
+
+/*
+API エンドポイント
+*/
+//カテゴリー全取得
+export const GetAllCategoryEndPoint = 'monooki/get/category/'
+

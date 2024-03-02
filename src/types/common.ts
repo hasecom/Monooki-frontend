@@ -7,6 +7,15 @@ export type mainLayoutOptionType = {
 	isBreadCrumbs?:boolean
 }
 /*
+fetch
+*/
+export interface FetchDataResult<T> {
+  data: T | null;
+  loading: boolean;
+	error: Error | null;
+}
+
+/*
 レシピ
 */
 export type RecipeType = {
