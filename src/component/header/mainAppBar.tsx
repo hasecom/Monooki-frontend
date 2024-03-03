@@ -56,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 const MainAppBar:NextPage<MainAppBarProps> = (props) => {
-	const { category } = usePresetContext();
+	const { category,tag } = usePresetContext();
 	
 	//ハンバーガー
 	const [isOpen, toggleOpen] = useCycle(false, true);
@@ -88,8 +88,8 @@ const MainAppBar:NextPage<MainAppBarProps> = (props) => {
 							<HamburgerButton isOpenSideBar={props.isOpenSideBar} isOpen={isOpen} toggle={toggle} />
 					</Box>
 				</Toolbar>
-				<MainAccordion category={category.data} />
-				<SideDrawer isOpen={isOpen} toggle={toggle} />
+				<MainAccordion category={category.data} tag={tag.data} />
+				<SideDrawer isOpen={isOpen} toggle={toggle} category={category.data} tag={tag.data} />
 			</AppBar>
 	);
 }

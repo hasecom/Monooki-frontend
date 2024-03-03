@@ -1,11 +1,12 @@
 'use client'
-import { GetAllCategoryEndPoint } from '@/constant/preset';
-import { CategoryType } from '@/types/data';
+import { GetAllCategoryEndPoint,GetAllTagEndPoint } from '@/constant/preset';
+import { CategoryType,TagType } from '@/types/data';
 import useFetchData from '@/hooks/fetch';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { FetchDataResult } from '@/types/common';
 interface ContextType {
-	category:FetchDataResult<CategoryType[]>
+	category:FetchDataResult<CategoryType[]>,
+	tag:FetchDataResult<TagType[]>
 }
 type ProviderProps = {
   children: ReactNode;
@@ -14,11 +15,17 @@ type ProviderProps = {
 const Context = createContext<ContextType | undefined>(undefined);
 const PreSetProvider: React.FC<ProviderProps> = ({ children }) => {
 	const {data:categoryData,loading:categoryLoading,error:categoryError } = useFetchData<CategoryType[]>(GetAllCategoryEndPoint);
-  const contextValue: ContextType = {
+	const {data:tagData,loading:tagLoading,error:tagError } = useFetchData<TagType[]>(GetAllTagEndPoint);
+	const contextValue: ContextType = {
 		category:{
 			data:categoryData,
 			loading:categoryLoading,
 			error:categoryError
+		},
+		tag:{
+			data:tagData,
+			loading:tagLoading,
+			error:tagError
 		}
 
   };

@@ -1,12 +1,19 @@
 import { Box } from "@mui/material";
 import {CategoryTagsTitle} from '@/ui/text/title';
 import { CategoryTagChip } from "@/ui/chip/chip";
-const CategoryTags = () => {
+import { CategoryLinkProps,TagLinkProps } from "@/types/common";
+import { NextPage } from "next";
+
+type CategoryTagsProps = {
+	headingText:string;
+} & (CategoryLinkProps | TagLinkProps);
+
+const CategoryTags:NextPage<CategoryTagsProps> = ({category,headingText,length=10}) => {
 	return (
 		<Box sx={{paddingY:1,paddingX:1}}>
-			<CategoryTagsTitle >定番のキーワード</CategoryTagsTitle>
+			<CategoryTagsTitle >{headingText}</CategoryTagsTitle>
 			{
-			categoryTagsData.map((tag,index)=>(
+			(category.slice(0, 10) || []).map((tag,index)=>(
 				<CategoryTagChip key={index} label={tag.name} />
 			))
 		}

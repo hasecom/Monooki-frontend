@@ -7,8 +7,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Heading } from '@/constant/preset';
-import { categoryContents, purposeContents } from '@/constant/preset';
-import { SideDrawerProps, categoryLinkProps } from '@/types/common';
+
+import { CategoryType,TagType } from '@/types/data';
 
 const SideDrawerAccordion = ({ heading, children }: { heading: string, children: ReactNode }) => {
 	return (
@@ -26,7 +26,12 @@ const SideDrawerAccordion = ({ heading, children }: { heading: string, children:
 		</Accordion>
 	)
 }
-const SideDrawerAccordionDetails: NextPage<categoryLinkProps> = ({ category, length = 5 }) => {
+type SideDrawerAccordionDetailsProps = {
+	category:CategoryType[] | TagType[]  | null,
+	length:number
+}
+const SideDrawerAccordionDetails: NextPage<SideDrawerAccordionDetailsProps> = ({ category, length = 5 }) => {
+	if(!category) return <></>;
 	return (
 		<>
 			{category.slice(0, length).map((item, index) => (
@@ -47,16 +52,22 @@ const SideDrawerAccordionDetails: NextPage<categoryLinkProps> = ({ category, len
 		</>
 	)
 }
+export type SideDrawerProps = {
+	isOpen:boolean,
+	toggle:()=>void,
+	category:CategoryType[] | null,
+	tag:TagType[] | null
+}
 
 const SideDrawer: NextPage<SideDrawerProps> = (props) => {
 	return (
 		<Drawer open={props.isOpen} onClose={props.toggle}>
 			<List sx={{ maxWidth: '250px' }}>
 				<SideDrawerAccordion heading={Heading.Category.CategorySearch}>
-					<SideDrawerAccordionDetails category={categoryContents} />
+					<SideDrawerAccordionDetails category={props.category} length={10} />
 				</SideDrawerAccordion>
 				<SideDrawerAccordion heading={Heading.Category.PurposeSearch}>
-					<SideDrawerAccordionDetails category={purposeContents} />
+					<SideDrawerAccordionDetails category={props.tag} length={10} />
 				</SideDrawerAccordion>
 				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
 					<ListItem key={text} disablePadding>

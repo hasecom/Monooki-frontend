@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { CategoryType } from "./data"
+import { CategoryType,TagType } from "./data"
 export type LayoutProps  = {
 	children:ReactNode
 }
@@ -59,17 +59,14 @@ export type footerCategoryLinksType = {
 カテゴリ&目的
 #######
 */
-export type categoryType = {
-	name:string
-}
 export type CategoryLinkProps = {
 	category:CategoryType[],
 	length?:number
 }
-export type CategoryListProps = {
-	category:categoryType[]
+export type TagLinkProps = {
+	category:TagType[],
+	length?:number
 }
-
 /* 
 ########
 UI
@@ -83,10 +80,7 @@ export type HamburgerButtonProps = {
   isOpenSideBar: boolean,
 
 };
-export type SideDrawerProps = {
-	isOpen:boolean,
-	toggle:()=>void
-}
+
 /* 
 ########
 mediaQuery

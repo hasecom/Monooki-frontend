@@ -1,7 +1,7 @@
 export const Heading = {
 	Category:{
 		CategorySearch:"カテゴリから探す",
-		PurposeSearch:"目的から探す"
+		PurposeSearch:"タグから探す"
 	},
 	Common:{
 		AboutService:"サービスについて"
@@ -58,4 +58,4 @@ API エンドポイント
 */
 //カテゴリー全取得
 export const GetAllCategoryEndPoint = 'monooki/get/category/'
-
+export const GetAllTagEndPoint = 'monooki/get/tag/'

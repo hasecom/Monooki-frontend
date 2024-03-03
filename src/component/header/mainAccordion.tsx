@@ -7,13 +7,15 @@ import { CategoryLink } from '@/ui/link/categoryLink';
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 import { Heading } from '@/constant/preset';
 import { NextPage } from 'next';
-import { CategoryType } from '@/types/data';
-import { categoryFilterByClassName } from '@/util/categoryFormat';
+import { CategoryType, TagType } from '@/types/data';
+import { categoryFilterByClassName,tagFilterByTagType } from '@/util/formatter';
 type MainAccordionProps = {
-	category:CategoryType[] | null
+	category:CategoryType[] | null,
+	tag:TagType[] | null
 }
-const MainAccordion:NextPage<MainAccordionProps> = ({category}) => {
+const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
 	const filteredCategies = categoryFilterByClassName({categories:category,className:2})
+	const filteredTags = tagFilterByTagType({tags:tag,tagType:2})
 	const [isHovered, setIsHovered] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);
 	if(!isScreenSizeAbove('sm'))return (<></>);//スマホサイズは非表示
@@ -66,7 +68,7 @@ const MainAccordion:NextPage<MainAccordionProps> = ({category}) => {
 			)}
 			{isHovered && selectedTab === 1 && (
 				<>
-				<CategoryLink category={filteredCategies}  />
+				<CategoryLink category={filteredTags}  />
 				</>
 			)}
 		</Box>

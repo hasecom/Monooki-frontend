@@ -4,9 +4,10 @@ import Paper from '@mui/material/Paper';
 
 import { Grid } from '@mui/material';
 import { NextPage } from 'next';
-import { CategoryLinkProps } from '@/types/common';
+import { CategoryLinkProps, TagLinkProps } from '@/types/common';
 import Typography from '@mui/material/Typography';
-const CategoryGridPapers:NextPage<CategoryLinkProps> = ({category,length}) => {
+
+const CategoryGridPapers:NextPage<CategoryLinkProps | TagLinkProps> = ({category,length}) => {
   return (
     <Grid container>
 			{category.slice(0, length).map((item, index) => (

@@ -6,11 +6,12 @@ import { Heading } from "@/constant/preset";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 import { CategoryPaperLink } from "@/ui/link/categoryLink";
 import { usePresetContext } from "@/provider/preSetProvider";
-import { categoryFilterByClassName } from "@/util/categoryFormat";
+import { categoryFilterByClassName, tagFilterByTagType } from "@/util/formatter";
 
 const CategoryTabs = () => {
-	const { category } = usePresetContext();
+	const { category,tag } = usePresetContext();
 	const filteredCategies = categoryFilterByClassName({categories:category.data,className:1})
+	const filteredTags = tagFilterByTagType({tags:tag.data,tagType:2})
 	const [value, setValue] = useState("1");
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		setValue(newValue);
@@ -32,7 +33,7 @@ const CategoryTabs = () => {
 					<CategoryPaperLink category={filteredCategies}  />
 				</TabPanel>
 				<TabPanel value="2">
-				<CategoryPaperLink category={filteredCategies}  />
+				<CategoryPaperLink category={filteredTags}  />
 				</TabPanel>
 			</TabContext>
 		</>
