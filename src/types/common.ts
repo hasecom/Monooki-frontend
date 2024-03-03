@@ -88,3 +88,13 @@ mediaQuery
 */
 export type MediaQueryBreakPointType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type MediaQueryDirection = 'up' | 'down' | 'only';
+
+/** 
+* @namespace breadCrumbMenu
+* @property  
+*/
+export type breadCrumbValueType = {
+	name:string,
+	path:string,
+	isLink:boolean
+}

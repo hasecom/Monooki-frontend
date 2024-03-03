@@ -59,3 +59,31 @@ API エンドポイント
 //カテゴリー全取得
 export const GetAllCategoryEndPoint = 'monooki/get/category/'
 export const GetAllTagEndPoint = 'monooki/get/tag/'
+
+/**
+* 種類
+/**
+ * @namespace
+ * @property {object}  TYPES -設定値
+ * @property {number}  TYPES.CATEGORY.CATEGORY_MAIN_CATEGORY -大カテゴリ
+ * @property {number}  CATEGORY.CATEGORY_SUB_CATEGORY -中カテゴリ
+ * @property {number}  CATEGORY.CATEGORY_SUB_SUB_CATEGORY -小カテゴリ
+ * @property {number}  TAG.TAG_PROPER_NOUN -固有名詞
+ * @property {number}  TAG.NOUN -名詞
+ * @property {number}  TAG.VERB -動詞
+ * @property {number}  TAG.ADJECTIVE -形容詞
+ */
+export const TYPES = {
+	CATEGORY:{
+		CATEGORY_MAIN_CATEGORY:1,
+		CATEGORY_SUB_CATEGORY:2,
+		CATEGORY_SUB_SUB_CATEGORY:3
+	},
+	TAG:{
+		TAG_PROPER_NOUN:1,
+		TAG_NOUN:2,
+		TAG_PVERB:3,
+		TAG_PADJECTIVE:4
+	}
+}
+
