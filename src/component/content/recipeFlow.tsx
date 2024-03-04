@@ -7,9 +7,12 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Typography from '@mui/material/Typography';
-import { RecipeFlowProps } from '@/types/common';
+import { RecipeType } from '@/types/data';
+export type RecipeFlowProps = {
+	recipe:RecipeType
+}
 const RecipeFlow:NextPage<RecipeFlowProps> = ({recipe}) => {
-	const steps = recipe.content;
+	const steps = recipe.contents ? recipe.contents : [];
 	return (
 		<Box sx={{ maxWidth: 400 }}>
 			<Stepper activeStep={-1}  orientation="vertical">

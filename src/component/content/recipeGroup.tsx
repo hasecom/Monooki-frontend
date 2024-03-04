@@ -12,11 +12,12 @@ type RecipeGroupProps = {
 	recipe:RecipeType | null
 }
 const RecipeGroup: NextPage<RecipeGroupProps> = ({ recipe }) => {
+	console.log(recipe)
 	if(!recipe) return <></>
 	if (isScreenSizeAbove('sm')) {//pc
 		return (
 			<Box>
-				<RecipeVideo />
+				<RecipeVideo videoUrl={recipe.videoUrl} />
 				<Box sx={{ paddingX: 1 }}>
 					<RecipeHeading>{recipe.title}</RecipeHeading>
 					<MainContentText>{recipe.introduction}</MainContentText>

@@ -35,9 +35,7 @@ export type RecipeContentType = {
 }
 
 
-export type RecipeFlowProps = {
-	recipe:RecipeType
-}
+
 /*
 #######
 フッター

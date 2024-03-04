@@ -2,7 +2,12 @@
 import { Box } from "@mui/material";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 import { getWindowSize } from "@/hooks/getWindowSize";
-const RecipeVideo = () => {
+import { NextPage } from "next";
+
+type RecipeVideoProps = {
+	videoUrl:string
+}
+const RecipeVideo:NextPage<RecipeVideoProps> = ({videoUrl}) => {
 	const { height, width } = getWindowSize();
 	return (
 		<>
@@ -10,7 +15,7 @@ const RecipeVideo = () => {
 				<iframe 
 					width={isScreenSizeAbove('sm')? "560" : width } 
 					height={isScreenSizeAbove('sm')? "560" : width } 
-					src="https://www.youtube.com/embed/wlg0bcJUSb4?si=z-D9LC4bosqGdjzT" 
+					src={videoUrl}
 					title="YouTube video player" 
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
 					>

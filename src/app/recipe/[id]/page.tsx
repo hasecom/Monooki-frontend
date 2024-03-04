@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import { getRecipe } from "@/util/getRecipe";
 import RecipeGroup from "@/component/content/recipeGroup";
 import useFetchData from "@/hooks/fetch";
-import { RecipeType,ContentType } from "@/types/data";
+
 import { GetRecipeDetail } from "@/constant/preset";
 type RecipeProps = {
 	params: {
@@ -12,8 +12,7 @@ type RecipeProps = {
 }
 const Recipe: NextPage<RecipeProps> = async (props) => {
 	const url = GetRecipeDetail + props.params.id;
-	const { recipe } = await getRecipe<string>(url);
-	console.log(recipe)
+	const  {recipe}  = await getRecipe<string>(url);
 	return (
 		<>
 				<RecipeGroup recipe={recipe} />
