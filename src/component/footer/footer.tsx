@@ -1,3 +1,4 @@
+'use client'
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 import { Box, Grid, List, ListItem, Typography, ListItemText } from "@mui/material";
 import { constantLink, credit, footerCategoryLinks, Heading } from "@/constant/preset";

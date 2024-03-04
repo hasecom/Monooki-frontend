@@ -1,3 +1,4 @@
+'use client'
 import { Box, Typography } from "@mui/material"
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { CategoryLinkProps,TagLinkProps } from "@/types/common";

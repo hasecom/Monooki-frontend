@@ -1,3 +1,4 @@
+'use client'
 import { Chip } from "@mui/material"
 const CategoryTagChip= ({label}:{label:string}) => {
 	return (

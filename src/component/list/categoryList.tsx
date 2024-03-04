@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+'use client'
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
 import { CategoryTitle, CategoryMainTitle } from "@/ui/text/title";
@@ -6,7 +6,6 @@ import { usePresetContext } from "@/provider/preSetProvider";
 import { CategoryType } from "@/types/data";
 import { TYPES } from "@/constant/preset";
 import { Fragment } from "react";
-import { CategoryLink } from "@/ui/link/categoryLink";
 import { Box } from "@mui/material";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 /**

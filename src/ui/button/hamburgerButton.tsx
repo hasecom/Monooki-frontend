@@ -1,7 +1,12 @@
+'use client'
 import { NextPage } from 'next';
 import { motion } from 'framer-motion';
-import { HamburgerButtonProps,SideDrawerProps } from '@/types/common';
+import { HamburgerButtonProps } from '@/types/common';
 
+type SideDrawerProps = {
+	isOpen:boolean,
+	toggle:()=>void
+}
 const Path = (props: any) => (
 	<motion.path fill="transparent" strokeWidth="2" stroke="#2d3436" strokeLinecap="round" {...props} />
 );

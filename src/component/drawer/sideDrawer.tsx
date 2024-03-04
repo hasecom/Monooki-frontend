@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode } from 'react';
 import { NextPage } from 'next';
 import Drawer from '@mui/material/Drawer';

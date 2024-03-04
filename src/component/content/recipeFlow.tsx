@@ -1,3 +1,4 @@
+'use client'
 import { NextPage } from 'next';
 import React from 'react';
 import Box from '@mui/material/Box';

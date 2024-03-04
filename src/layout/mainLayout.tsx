@@ -2,6 +2,7 @@
 import { NextPage } from "next";
 import { LayoutProps, mainLayoutOptionType } from "@/types/common";
 import { PreSetProvider } from "@/provider/preSetProvider";
+import { BreadCrumbProvider } from "@/provider/breadCrumbProvider";
 import Header from "@/component/header/header";
 import Footer from "@/component/footer/footer";
 import { Grid } from "@mui/material";
@@ -15,27 +16,29 @@ const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children, is
 	return (
 		<>
 			<PreSetProvider>
-				<Header />
-				{isBreadCrumbs && isScreenSizeAboveSm && (
-					<BasicBreadCrumbs />
-				)}
-				<Grid container spacing={0} direction="row" sx={{
-					height: 'auto',
-					maxWidth: '1000px',
-					margin: '0 auto',
-					paddingTop: isScreenSizeAboveSm ? '40px' : '0'
-				}}>
-					<Grid item xs={12} md={8}>
-						<Box>{children}</Box>
+				<BreadCrumbProvider>
+					<Header />
+					{isBreadCrumbs && isScreenSizeAboveSm && (
+						<BasicBreadCrumbs />
+					)}
+					<Grid container spacing={0} direction="row" sx={{
+						height: 'auto',
+						maxWidth: '1000px',
+						margin: '0 auto',
+						paddingTop: isScreenSizeAboveSm ? '40px' : '0'
+					}}>
+						<Grid item xs={12} md={8}>
+							<Box>{children}</Box>
+						</Grid>
+						<Grid item xs={0} md={4}>
+							<SideBar />
+						</Grid>
 					</Grid>
-					<Grid item xs={0} md={4}>
-						<SideBar />
-					</Grid>
-				</Grid>
-				{isBreadCrumbs && !isScreenSizeAboveSm && (
-					<BasicBreadCrumbs />
-				)}
-				<Footer />
+					{isBreadCrumbs && !isScreenSizeAboveSm && (
+						<BasicBreadCrumbs />
+					)}
+					<Footer />
+				</BreadCrumbProvider>
 			</PreSetProvider>
 		</>
 	)

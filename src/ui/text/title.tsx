@@ -1,3 +1,4 @@
+'use client'
 import { NextPage } from "next";
 import { Typography } from "@mui/material";
 import { ReactNodeProp } from "@/types/common";

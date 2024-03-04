@@ -1,3 +1,4 @@
+'use client'
 import { Box } from "@mui/material";
 import {CategoryTagsTitle} from '@/ui/text/title';
 import { CategoryTagChip } from "@/ui/chip/chip";

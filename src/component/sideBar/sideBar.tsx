@@ -1,3 +1,4 @@
+'use client'
 import { usePresetContext } from "@/provider/preSetProvider";
 import CategoryTags from "../widget/categoryTags";
 import { tagFilterByTagType } from "@/util/formatter";
