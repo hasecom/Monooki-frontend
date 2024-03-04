@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
-import { CategoryType,TagType } from "./data"
+import { CategoryType,TagType,RecipeType } from "./data"
+ 
 export type LayoutProps  = {
 	children:ReactNode
 }
@@ -18,26 +19,22 @@ export interface FetchDataResult<T> {
 /*
 レシピ
 */
-export type RecipeType = {
-	id:string,
-	name:string,
-	introduction:string,
-	content:RecipeContentType[],
-	videoUrl:string,
-	thumbnailUrl:string,
-	remark:string
+// export type RecipeType = {
+// 	id:string,
+// 	name:string,
+// 	introduction:string,
+// 	content:RecipeContentType[],
+// 	videoUrl:string,
+// 	thumbnailUrl:string,
+// 	remark:string
 
-}
+// }
 export type RecipeContentType = {
 	label:string,
 	description:string
 }
-export type getRecipeProps = {
-	recipe:RecipeType
-}
-export type RecipeGroupProps = {
-	recipe:RecipeType
-}
+
+
 export type RecipeFlowProps = {
 	recipe:RecipeType
 }

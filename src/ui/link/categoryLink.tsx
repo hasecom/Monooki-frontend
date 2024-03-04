@@ -4,6 +4,8 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { CategoryLinkProps,TagLinkProps } from "@/types/common";
 import { CategoryGridPapers } from "../paper/paper";
 import { NextPage } from "next";
+import Link from "next/link";
+import { PAGES } from "@/constant/preset";
 const CategoryLink:NextPage<CategoryLinkProps | TagLinkProps> = ({category,length = 10}) => {
 	return (
 		<Box sx={{boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'}}>
@@ -13,7 +15,7 @@ const CategoryLink:NextPage<CategoryLinkProps | TagLinkProps> = ({category,lengt
 				</Box>
 			))}
 			<Box sx={{ display: 'inline-block', paddingX: 2, paddingY: 2, color: '#636e72' }}>
-				すべてを見る
+				<Link href={PAGES.CATEGORY_LIST_PAGE}>すべてを見る</Link>
 				<KeyboardArrowRightIcon />
 			</Box>
 		</Box>

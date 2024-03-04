@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { Tabs } from '@mui/material';
@@ -9,11 +9,14 @@ import { Heading } from '@/constant/preset';
 import { NextPage } from 'next';
 import { CategoryType, TagType } from '@/types/data';
 import { categoryFilterByClassName,tagFilterByTagType } from '@/util/formatter';
+import { useRouter } from 'next/navigation';
+import { PAGES } from '@/constant/preset';
 type MainAccordionProps = {
 	category:CategoryType[] | null,
 	tag:TagType[] | null
 }
 const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
+	const router = useRouter();
 	const filteredCategies = categoryFilterByClassName({categories:category,className:2})
 	const filteredTags = tagFilterByTagType({tags:tag,tagType:2})
 	const [isHovered, setIsHovered] = useState(false);
@@ -28,16 +31,23 @@ const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
 	const handleMouseLeave = () => {
 		setIsHovered(false);
 	};
-	const NavTab = ({ label, num }: any) => {
+	type NavTabProps = {
+		label:string,
+		num:number,
+		click?:()=>void
+	}
+	const NavTab = ({ label, num,click = ()=>{} }: NavTabProps) => {
 		return (
 			<Tab
 				label={label}
 				component="div"
 				onMouseEnter={() => { handleMouseEnter(num) }}
+				onClick={()=>{ click() }}
 			/>
 		);
 	};
 	const LinkTab = ({ label, link }: { label: string, link: string }) => {
+	
 		return (
 			<Tab
 				label={label}
@@ -56,7 +66,7 @@ const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
 					}
 				}}
 			>
-				<NavTab label={Heading.Category.CategorySearch} num={0} />
+				<NavTab label={Heading.Category.CategorySearch} num={0} click={()=>{router.push(PAGES.CATEGORY_LIST_PAGE)}} />
 				<NavTab label={Heading.Category.PurposeSearch} num={1} />
 				<NavTab label={Heading.Common.AboutService} num={2} />
 				<LinkTab label="Page One" link={'https://app.hasethblog.com'} />

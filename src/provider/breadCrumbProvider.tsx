@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { breadCrumbValueType } from '@/types/common';
-
+import { PAGES } from '@/constant/preset';
 
 interface ContextType {
 	breadCrumbValue:breadCrumbValueType[],
@@ -16,7 +16,7 @@ const BreadCrumbProvider: React.FC<ProviderProps> = ({ children }) => {
 	const initbreadCrumbValue = [
 		{
 			name:'ホーム',
-			path:'/',
+			path:PAGES.HOME_PAGE,
 			isLink:true
 		}
 	]

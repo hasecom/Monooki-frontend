@@ -23,10 +23,10 @@ const CategoryList = () => {
 					?.filter((category) => category.category_type == parentCategory.id)
 					.map((category, index) => (
 						<Grid container spacing={0} sx={{ my: 2 }} key={index}>
-							<Grid item xs={4} md={4}>
+							<Grid item xs={3} md={3}>
 								<Skeleton variant="rectangular" width={'50px'} height={'50px'} />
 							</Grid>
-							<Grid item xs={8} md={8}>
+							<Grid item xs={9} md={9}>
 								<CategoryTitle>{category.name}</CategoryTitle>
 								<CategoryListBySubType parentCategory={category} />
 							</Grid>

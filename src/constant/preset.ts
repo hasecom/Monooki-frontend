@@ -12,26 +12,14 @@ export const Heading = {
 	}
 }
 
-export const categoryContents = [
-	{ name: 'LINE' },
-	{ name: 'X' },
-	{ name: 'Youtube' },
-	{ name: 'Instagram' },
-	{ name: 'スマホ' },
-	{ name: 'PC' }
-]
-export const purposeContents = [
-	{name:'アプリが起動しないよおおおお'},
-	{name:'退会したい'},
-	{name:'会員登録したい'},
-	{name:'スマホが起動しない'}
-]
 export const recipes = [
 	{id:4},
 	{id:1000},
 	{id:2000},
 	{id:3000},
 	{id:4000},
+	{id:1111},
+	
 ]
 
 export const constantLink = [
@@ -56,9 +44,27 @@ export const credit = '© 2024 MONOOKI All rights reserved.'
 /*
 API エンドポイント
 */
-//カテゴリー全取得
+/**
+ * カテゴリー全取得
+*/
 export const GetAllCategoryEndPoint = 'monooki/get/category/'
+
+/**
+ * タグ全取得
+*/
 export const GetAllTagEndPoint = 'monooki/get/tag/'
+
+/**
+ * レシピ詳細取得(+recipe_uid)
+*/
+export const GetRecipeDetail = 'monooki/get/recipe/'
+
+
+export const PAGES = {
+	HOME_PAGE:"/",
+	CATEGORY_LIST_PAGE:"/category"
+}
+
 
 /**
 * 種類

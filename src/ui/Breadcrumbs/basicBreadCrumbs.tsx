@@ -1,20 +1,18 @@
 'use client'
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Typography from '@mui/material/Typography';
-import MUILink from '@mui/material/Link';
 import NextLink from 'next/link';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Divider } from '@mui/material';
 import { useBreadCrumbContext } from '@/provider/breadCrumbProvider';
-
+import { PAGES } from '@/constant/preset';
 const BasicBreadCrumbs = () => {
 	const { breadCrumbValue, addCurrentLocation } = useBreadCrumbContext();
 	useEffect(() => {
 		addCurrentLocation({
 			name: "カテゴリ",
-			path: "/category",
+			path: PAGES.CATEGORY_LIST_PAGE,
 			isLink: true
 		})
 	}, [])
