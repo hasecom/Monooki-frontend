@@ -1,9 +1,7 @@
-import { recipes } from "@/constant/preset";
+import { GetRecipeIdList } from "@/constant/preset";
 import { NextPage } from "next";
-import { getRecipe } from "@/util/getRecipe";
+import { getRecipe,getRecipeIdList } from "@/util/getRecipe";
 import RecipeGroup from "@/component/content/recipeGroup";
-import useFetchData from "@/hooks/fetch";
-
 import { GetRecipeDetail } from "@/constant/preset";
 type RecipeProps = {
 	params: {
@@ -12,7 +10,7 @@ type RecipeProps = {
 }
 const Recipe: NextPage<RecipeProps> = async (props) => {
 	const url = GetRecipeDetail + props.params.id;
-	const  {recipe}  = await getRecipe<string>(url);
+	const { recipe } = await getRecipe<string>(url);
 	return (
 		<>
 				<RecipeGroup recipe={recipe} />
@@ -22,8 +20,8 @@ const Recipe: NextPage<RecipeProps> = async (props) => {
 export default Recipe;
 
 export const generateStaticParams = async () => {
-	return await recipes.map((recipe) => ({
-		id: recipe.id.toString()
+	 const recipeIdList = await getRecipeIdList<string>(GetRecipeIdList);
+	return await recipeIdList.map((recipe) => ({
+		id: recipe.uid.toString()
 	}));
-
 }

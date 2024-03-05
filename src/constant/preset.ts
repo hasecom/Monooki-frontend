@@ -12,16 +12,6 @@ export const Heading = {
 	}
 }
 
-export const recipes = [
-	{id:4},
-	{id:1000},
-	{id:2000},
-	{id:3000},
-	{id:4000},
-	{id:1111},
-	
-]
-
 export const constantLink = [
 	{id:1,label:'プライバシーポリシー'},
 	{id:2,label:'利用規約'},
@@ -58,7 +48,10 @@ export const GetAllTagEndPoint = 'monooki/get/tag/'
  * レシピ詳細取得(+recipe_uid)
 */
 export const GetRecipeDetail = 'monooki/get/recipe/'
-
+/**
+ * レシピIDリスト取得
+ */
+export const GetRecipeIdList = 'monooki/get/recipeid/'
 
 export const PAGES = {
 	HOME_PAGE:"/",
