@@ -12,7 +12,6 @@ type RecipeGroupProps = {
 	recipe:RecipeType | null
 }
 const RecipeGroup: NextPage<RecipeGroupProps> = ({ recipe }) => {
-	console.log(recipe)
 	if(!recipe) return <></>
 	if (isScreenSizeAbove('sm')) {//pc
 		return (
@@ -25,7 +24,7 @@ const RecipeGroup: NextPage<RecipeGroupProps> = ({ recipe }) => {
 					<RecipeFlow recipe={recipe} />
 					<Divider sx={{ paddingY: 2 }} />
 					<RecipeFlowHeading>備考</RecipeFlowHeading>
-					<MainContentText>{recipe.introduction}</MainContentText>
+					<MainContentText>{recipe.remark}</MainContentText>
 					<Divider sx={{ paddingY: 2 }} />
 				</Box>
 			</Box>
@@ -36,14 +35,14 @@ const RecipeGroup: NextPage<RecipeGroupProps> = ({ recipe }) => {
 				<Box sx={{ paddingX: 1 }}>
 					<RecipeHeading>{recipe.title}</RecipeHeading>
 				</Box>
-				<RecipeVideo />
+				<RecipeVideo videoUrl={recipe.videoUrl} />
 				<Box sx={{ paddingX: 1, paddingY: 2 }}>
 					<MainContentText>{recipe.introduction}</MainContentText>
 					<RecipeFlowHeading>手順</RecipeFlowHeading>
 					<RecipeFlow recipe={recipe} />
 					<Divider sx={{ paddingY: 2 }} />
 					<RecipeFlowHeading>備考</RecipeFlowHeading>
-					<MainContentText>{recipe.introduction}</MainContentText>
+					<MainContentText>{recipe.remark}</MainContentText>
 					<Divider sx={{ paddingY: 2 }} />
 				</Box>
 			</Box>

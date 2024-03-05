@@ -22,7 +22,8 @@ export type RecipeType = {
   available: string;
   updatedAt: string;
   createdAt: string;
-	contents?:ContentType[]
+	contents?:ContentType[],
+	remark?:string
 };
 export type ContentType = {
 	id?:number,

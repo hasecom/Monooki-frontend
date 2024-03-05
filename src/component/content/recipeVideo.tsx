@@ -25,3 +25,4 @@ const RecipeVideo:NextPage<RecipeVideoProps> = ({videoUrl}) => {
 	)
 }
 export default RecipeVideo;
+
