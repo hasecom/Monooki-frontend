@@ -18,7 +18,6 @@ const useFetchData = <T>(endpoint: string): FetchDataResult<T> => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, [endpoint]);
 

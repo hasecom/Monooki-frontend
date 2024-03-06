@@ -2,86 +2,41 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
-
-const Search = styled('div')(({ theme }) => ({
-	position: 'relative',
-	borderRadius: theme.shape.borderRadius,
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
-	'&:hover': {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
-	},
-	marginLeft: 0,
-	width: '100%',
-	[theme.breakpoints.up('sm')]: {
-		marginLeft: theme.spacing(1),
-		width: 'auto',
-	},
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	pointerEvents: 'none',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: 'inherit',
-	width: '100%',
-	'& .MuiInputBase-input': {
-		padding: theme.spacing(1, 1, 1, 0),
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create('width'),
-		[theme.breakpoints.up('sm')]: {
-			width: '20ch',
-			'&:focus': {
-				width: '25ch',
-			},
-		},
-	},
-}));
+import useSearchInput from '@/hooks/useSearchInput';
 
 const SearchInputForm = () => {
-	return (
-		<>
-    <Autocomplete
-      id="free-solo-demo"
-      freeSolo
-      options={top100Films.map((option) => option.title)}
-      renderInput={(params) => (
-        <Search>
-          <SearchIconWrapper sx={{ zIndex: 10 }}>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            {...params.InputProps}
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-            sx={{ backgroundColor: '#dfe6e9', borderRadius: '16px' }}
+	const { inputValue, setInputValue, options } = useSearchInput();
+  return (
+    <Stack spacing={2} sx={{ width:300}}>
+      <Autocomplete
+			size="small"
+			 sx={{backgroundColor: '#dfe6e9', borderRadius: '16px'}}
+        freeSolo
+				options={options}
+				onInputChange={(event, newInputValue) => setInputValue(newInputValue)}
+        renderInput={(params) =>
+          <TextField
+            {...params}
+            label="検索"
+            variant="outlined"
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+							'& .MuiAutocomplete-input': {
+                paddingTop: '8px', 
+                paddingBottom: '8px',
+              },
+              '& fieldset': {
+                border: 'none',
+              },
+            }}
           />
-        </Search>
-	)} />
-	</>
-	)}
-
-const FreeSolo = () => {
-	return (
-		<Stack spacing={2} sx={{ width: 300 }}>
-			<Autocomplete
-				id="free-solo-demo"
-				freeSolo
-				options={top100Films.map((option) => option.title)}
-				renderInput={(params) => <TextField {...params} label="freeSolo" />}
-			/>
-		</Stack>
-	);
-}
+        }
+      />
+    </Stack>
+  );
+};
 export default SearchInputForm;
 
 const top100Films = [

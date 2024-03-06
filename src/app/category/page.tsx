@@ -4,7 +4,7 @@ import CategoryList from "@/component/list/categoryList";
 import { Box } from "@mui/material";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 
-export default function Home() {
+const  Category = () => {
   return (
 		<MainLayout>
 			<Box sx={{
@@ -17,3 +17,4 @@ export default function Home() {
 		</MainLayout>
   );
 }
+export default Category;
