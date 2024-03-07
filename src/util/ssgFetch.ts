@@ -29,3 +29,4 @@ export const getRecipeTitleList = async(endPoint:string):Promise<CategoryType[]>
 	const res = await fetch(url + endPoint);
 	return res.json();
 }
+

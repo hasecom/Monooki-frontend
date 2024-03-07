@@ -1,6 +1,6 @@
 import { GetRecipeIdList } from "@/constant/preset";
 import { NextPage } from "next";
-import { getRecipe,getRecipeIdList } from "@/util/getRecipe";
+import { getRecipe,getRecipeIdList } from "@/util/ssgFetch";
 import RecipeGroup from "@/component/content/recipeGroup";
 import { GetRecipeDetail } from "@/constant/preset";
 type RecipeProps = {
