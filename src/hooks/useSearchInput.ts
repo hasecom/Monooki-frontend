@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { getRecipeTitleList } from '@/util/getRecipe';
+import { getRecipeTitleList } from '@/util/ssgFetch';
 
 const useSearchInput = () => {
 	const [inputValue, setInputValue] = useState('');
