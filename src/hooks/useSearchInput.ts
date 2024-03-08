@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
-import { getRecipeTitleList } from '@/util/ssgFetch';
-
+import { ssgGetFetch } from '@/util/ssgFetch';
+import { CategoryType } from '@/types/data';
 const useSearchInput = () => {
 	const [inputValue, setInputValue] = useState('');
 	const [options, setOptions] = useState<string[]>([]);
@@ -11,7 +11,7 @@ const useSearchInput = () => {
 				option.toLowerCase().includes(inputValue.toLowerCase())
 			);
 			if(filteredOptions.length == 0){
-			const data  = await getRecipeTitleList('monooki/get/category/');
+			const data  = await ssgGetFetch<CategoryType[]>('monooki/get/category/');
 				setOptions(data.map(recipe => recipe.name));
 			}
 		}

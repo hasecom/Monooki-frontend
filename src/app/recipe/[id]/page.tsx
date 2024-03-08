@@ -1,16 +1,20 @@
 import { GetRecipeIdList } from "@/constant/preset";
 import { NextPage } from "next";
-import { getRecipe,getRecipeIdList } from "@/util/ssgFetch";
+import { ssgGetFetch } from "@/util/ssgFetch";
 import RecipeGroup from "@/component/content/recipeGroup";
 import { GetRecipeDetail } from "@/constant/preset";
+import { RecipeType } from "@/types/data";
 type RecipeProps = {
 	params: {
 		id: string
 	}
 }
+type getRecipeProps = {
+	recipe:RecipeType
+}
 const Recipe: NextPage<RecipeProps> = async (props) => {
-	const url = GetRecipeDetail + props.params.id;
-	const { recipe } = await getRecipe<string>(url);
+	const endPoint = GetRecipeDetail + props.params.id;
+	const { recipe } = await ssgGetFetch<getRecipeProps>(endPoint)
 	return (
 		<>
 				<RecipeGroup recipe={recipe} />
@@ -19,8 +23,12 @@ const Recipe: NextPage<RecipeProps> = async (props) => {
 }
 export default Recipe;
 
+type getRecipeIdListType = {
+	uid:string
+}
+
 export const generateStaticParams = async () => {
-	 const recipeIdList = await getRecipeIdList<string>(GetRecipeIdList);
+	 const recipeIdList = await ssgGetFetch<getRecipeIdListType[]>(GetRecipeIdList);
 	return await recipeIdList.map((recipe) => ({
 		id: recipe.uid.toString()
 	}));
