@@ -38,7 +38,10 @@ API エンドポイント
  * カテゴリー全取得
 */
 export const GetAllCategoryEndPoint = 'monooki/get/category/'
-
+/**
+ * カテゴリー特定取得（?attribute=attribute_name)
+*/
+export const GetPartCategoryEndPoint = 'monooki/get/category/?attribute=';
 /**
  * タグ全取得
 */
