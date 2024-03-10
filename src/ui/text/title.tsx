@@ -27,5 +27,10 @@ const RecipeHeading:NextPage<ReactNodeProp> = ({children}) => {
 		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2,fontSize:'1.25rem'}}>{children}</Typography>
 	)
 }
+const RecipeListTitle:NextPage<ReactNodeProp> = ({children}) => {
+	return (
+		<Typography variant="body1" sx={{fontSize:'1.15em',paddingY:2}}>{children}</Typography>
+	)
+}
 
-export {CategoryTagsTitle,CategoryTitle,RecipeHeading,RecipeFlowHeading,CategoryMainTitle}
+export {CategoryTagsTitle,CategoryTitle,RecipeHeading,RecipeFlowHeading,CategoryMainTitle,RecipeListTitle}

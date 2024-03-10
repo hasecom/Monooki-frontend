@@ -52,6 +52,11 @@ export const GetAllTagEndPoint = 'monooki/get/tag/'
 */
 export const GetRecipeDetail = 'monooki/get/recipe/'
 /**
+ * レシピ詳細取得(カテゴリ)
+*/
+export const GetRecipeDetailByCategory = 'monooki/get/recipeCategoryMap/?id='
+
+/**
  * レシピIDリスト取得
  */
 export const GetRecipeIdList = 'monooki/get/recipeid/'
