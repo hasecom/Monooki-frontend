@@ -2,7 +2,7 @@
 import { GetAllCategoryEndPoint,GetAllTagEndPoint } from '@/constant/preset';
 import { CategoryType,TagType } from '@/types/data';
 import useFetchData from '@/hooks/fetch';
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { FetchDataResult } from '@/types/common';
 interface ContextType {
 	category:FetchDataResult<CategoryType[]>,

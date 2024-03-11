@@ -10,7 +10,6 @@ import SideBar from "@/component/sideBar/sideBar";
 import { Box } from "@mui/system";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
 import BasicBreadCrumbs from "@/ui/Breadcrumbs/basicBreadCrumbs";
-
 const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children, isBreadCrumbs = true }) => {
 	const isScreenSizeAboveSm = isScreenSizeAbove('sm');
 	return (

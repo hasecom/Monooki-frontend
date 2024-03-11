@@ -1,6 +1,5 @@
 'use client'
 import MainAppBar from "@/component/header/mainAppBar"
-
 const Header = () =>  {
 	return (
 		<>

@@ -4,8 +4,8 @@ import { LayoutProps } from "@/types/common";
 import MainLayout from "@/layout/mainLayout";
 import { Box } from "@mui/material";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
+
 const CategoryLayout: NextPage<LayoutProps> = ({ children }) => {
-	
 	return (
 		<>
 			<MainLayout>

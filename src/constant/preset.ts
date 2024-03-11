@@ -55,7 +55,6 @@ export const GetRecipeDetail = 'monooki/get/recipe/'
  * レシピ詳細取得(カテゴリ)
 */
 export const GetRecipeDetailByCategory = 'monooki/get/recipeCategoryMap/?id='
-
 /**
  * レシピIDリスト取得
  */
@@ -63,7 +62,9 @@ export const GetRecipeIdList = 'monooki/get/recipeid/'
 
 export const PAGES = {
 	HOME_PAGE:"/",
-	CATEGORY_LIST_PAGE:"/category"
+	CATEGORY_LIST_PAGE:"/category",
+	CATEGORY_RECIPE_MAP_LIST_PAGE:"/category/",//category/category_attribute
+	RECIPE_PAGE:'/recipe/',//recipe/recipe_uid
 }
 
 

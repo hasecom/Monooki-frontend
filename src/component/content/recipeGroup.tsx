@@ -12,7 +12,7 @@ type RecipeGroupProps = {
 	recipe:RecipeType | null
 }
 const RecipeGroup: NextPage<RecipeGroupProps> = ({ recipe }) => {
-	if(!recipe) return <></>
+	if(!recipe) return <>NotFound.</>
 	if (isScreenSizeAbove('sm')) {//pc
 		return (
 			<Box>

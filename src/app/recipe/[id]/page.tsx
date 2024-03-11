@@ -9,12 +9,11 @@ type RecipeProps = {
 		id: string
 	}
 }
-type getRecipeProps = {
-	recipe:RecipeType
-}
+
 const Recipe: NextPage<RecipeProps> = async (props) => {
 	const endPoint = GetRecipeDetail + props.params.id;
-	const { recipe } = await ssgGetFetch<getRecipeProps>(endPoint)
+	const recipe = await ssgGetFetch<RecipeType>(endPoint);
+
 	return (
 		<>
 				<RecipeGroup recipe={recipe} />
