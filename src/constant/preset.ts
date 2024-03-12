@@ -95,3 +95,16 @@ export const TYPES = {
 	}
 }
 
+
+export const COMMON_CRUMBS = {
+	HOME:{
+		name:'ホーム',
+		path:PAGES.HOME_PAGE,
+		isLink:true
+	},
+	CATEGORY:{
+		name: "カテゴリ",
+		path:PAGES.CATEGORY_LIST_PAGE,
+		isLink: true
+	}	
+}

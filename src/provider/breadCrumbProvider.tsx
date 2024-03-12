@@ -1,11 +1,10 @@
 'use client'
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 import { breadCrumbValueType } from '@/types/common';
-import { PAGES } from '@/constant/preset';
+import useBreadCrumb from '@/hooks/useBreadCrumb';
 
 interface ContextType {
-	breadCrumbValue:breadCrumbValueType[],
-	addCurrentLocation:(newBreadcrumbItem:breadCrumbValueType)=>void
+	breadCrumbValue:breadCrumbValueType[]
 }
 type ProviderProps = {
   children: ReactNode;
@@ -13,21 +12,10 @@ type ProviderProps = {
 
 const Context = createContext<ContextType | undefined>(undefined);
 const BreadCrumbProvider: React.FC<ProviderProps> = ({ children }) => {
-	const initbreadCrumbValue = [
-		{
-			name:'ホーム',
-			path:PAGES.HOME_PAGE,
-			isLink:true
-		}
-	]
-	const [breadCrumbValue,setBreadCrumbValue] = useState(initbreadCrumbValue);
-	const addCurrentLocation = ({newBreadcrumbItem}:{newBreadcrumbItem:breadCrumbValueType}) => {
-		const newBreadCrumbValue = [...initbreadCrumbValue, newBreadcrumbItem];
-		setBreadCrumbValue(newBreadCrumbValue);
-	}
+	const {breadCrumbValue} = useBreadCrumb();
+
 	const contextValue: ContextType = {
-		breadCrumbValue:breadCrumbValue,
-		addCurrentLocation:(newBreadcrumbItem:breadCrumbValueType)=>addCurrentLocation({newBreadcrumbItem})
+		breadCrumbValue:breadCrumbValue
   };
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

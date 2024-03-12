@@ -23,8 +23,6 @@ export type RecipeContentType = {
 	description:string
 }
 
-
-
 /*
 #######
 フッター

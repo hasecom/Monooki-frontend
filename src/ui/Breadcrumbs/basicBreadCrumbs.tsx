@@ -1,43 +1,28 @@
 'use client'
-import React, { useEffect, useMemo, useState } from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import NextLink from 'next/link';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Divider } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import { useBreadCrumbContext } from '@/provider/breadCrumbProvider';
-import { PAGES } from '@/constant/preset';
-import { setBreadCrumb } from "@/util/setBreadCrumb";
-import { usePathname } from 'next/navigation';
 const BasicBreadCrumbs = () => {
-	const { breadCrumbValue, addCurrentLocation } = useBreadCrumbContext();
-	const pathname = usePathname();
-	const [aaa ,setAaa] = useState<any>(0);
-	useMemo(() => {
-		setAaa(1)
-		console.log(aaa)
-		if(aaa != 0) return;
-		setBreadCrumb(pathname);
-  }, [aaa])
-	useEffect(() => {
-		addCurrentLocation({
-			name: "カテゴリ",
-			path: PAGES.CATEGORY_LIST_PAGE,
-			isLink: true
-		})
-	}, [])
+	const { breadCrumbValue } = useBreadCrumbContext();
+
 	const breadcrumbs = [
 		...breadCrumbValue.map((link, index) => {
+
 			return (
-				<NextLink href={link.path} key={index}>
+				link.isLink ? (
+					<NextLink href={link.path as string} key={index}>
 						{link.name}
-				</NextLink>
+					</NextLink>
+				) : (
+					<Typography key="3" color="text.primary">
+						{link.name}
+					</Typography>
+				)
 			)
 		})
-		// <Typography key="3" color="text.primary">
-		// 	Breadcrumb
-		// </Typography>, */}
-
 	];
 	return (
 		<>
