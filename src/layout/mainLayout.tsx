@@ -1,7 +1,6 @@
 'use client'
 import { NextPage } from "next";
 import { LayoutProps, mainLayoutOptionType } from "@/types/common";
-import { PreSetProvider } from "@/provider/preSetProvider";
 import { BreadCrumbProvider } from "@/provider/breadCrumbProvider";
 import Header from "@/component/header/header";
 import Footer from "@/component/footer/footer";
@@ -14,7 +13,6 @@ const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children, is
 	const isScreenSizeAboveSm = isScreenSizeAbove('sm');
 	return (
 		<>
-			<PreSetProvider>
 				<BreadCrumbProvider>
 					<Header />
 					{isBreadCrumbs && isScreenSizeAboveSm && (
@@ -38,7 +36,6 @@ const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children, is
 					)}
 					<Footer />
 				</BreadCrumbProvider>
-			</PreSetProvider>
 		</>
 	)
 }

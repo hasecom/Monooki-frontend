@@ -3,7 +3,10 @@ import { GetAllCategoryEndPoint,GetAllTagEndPoint } from '@/constant/preset';
 import { CategoryType,TagType } from '@/types/data';
 import useFetchData from '@/hooks/fetch';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import getCurrentLocation from '@/util/getCurrentLocation';
 import { FetchDataResult } from '@/types/common';
+import { usePathname } from 'next/navigation';
+import { PAGES } from '@/constant/preset';
 interface ContextType {
 	category:FetchDataResult<CategoryType[]>,
 	tag:FetchDataResult<TagType[]>
@@ -14,8 +17,12 @@ type ProviderProps = {
 
 const Context = createContext<ContextType | undefined>(undefined);
 const PreSetProvider: React.FC<ProviderProps> = ({ children }) => {
+	const pathname = usePathname();
 	const {data:categoryData,loading:categoryLoading,error:categoryError } = useFetchData<CategoryType[]>(GetAllCategoryEndPoint);
 	const {data:tagData,loading:tagLoading,error:tagError } = useFetchData<TagType[]>(GetAllTagEndPoint);
+	if(getCurrentLocation(pathname) == PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE){
+		console.log("aaa")
+	}
 	const contextValue: ContextType = {
 		category:{
 			data:categoryData,

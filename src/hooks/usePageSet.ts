@@ -1,8 +1,10 @@
 import { GetPartCategoryEndPoint, GetRecipeDetail, PAGES, GetCategoryByRecipeUid } from "@/constant/preset"
+import { usePresetContext } from "@/provider/preSetProvider";
 import { CategoryType, RecipeType } from "@/types/data";
 import axios, { AxiosResponse } from "axios";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import getCurrentLocation from "@/util/getCurrentLocation";
 const usePageSet = () => {
 	const pathname = usePathname();
 	const spilitRequestPathNameArray = pathname.split('/');
@@ -10,30 +12,28 @@ const usePageSet = () => {
 	const [categoryData, setCategoryData] = useState<CategoryType[] | null>();
 	const [recipeViewData, setRecipeViewData] = useState<RecipeType | null>();
 	const [recipeViewCategory, setRecipeViewCategory] = useState<CategoryType[] | null>();
-
-		useEffect(() => {
-			const mounted = async () => {
-				//カテゴリマップスページ
-				if (spilitRequestPathNameArray.length == splitPathNameArray(PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE).length
-					&& spilitRequestPathNameArray[1] == splitPathNameArray(PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE)[1]) {
-					const category = spilitRequestPathNameArray[2];
-					const fetchResult = await fetchData<CategoryType[]>(GetPartCategoryEndPoint + category);
-					setCategoryData(fetchResult);
-					//カテゴリページ
-				} else if (spilitRequestPathNameArray.length == splitPathNameArray(PAGES.CATEGORY_LIST_PAGE).length
-					&& spilitRequestPathNameArray[1] == splitPathNameArray(PAGES.CATEGORY_LIST_PAGE)[1]) {
-					//レシピ
-				} else if (spilitRequestPathNameArray.length == splitPathNameArray(PAGES.RECIPE_PAGE).length
-					&& spilitRequestPathNameArray[1] == splitPathNameArray(PAGES.RECIPE_PAGE)[1]) {
-					const recipeUid = spilitRequestPathNameArray[2];
-					const fetchRecipeResult = await fetchData<RecipeType>(GetRecipeDetail + recipeUid + '/');
-					setRecipeViewData(fetchRecipeResult);
-					const fetchCategoryResult = await fetchData<CategoryType[]>(GetCategoryByRecipeUid + recipeUid + '/');
-					setRecipeViewCategory(fetchCategoryResult);
-				}
+	const { category, tag } = usePresetContext();
+	useEffect(() => {
+		const mounted = async () => {
+			//カテゴリマップスページ
+			if (getCurrentLocation(pathname) == PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE) {
+				const categoryAttribute = spilitRequestPathNameArray[2];
+				if (category.loading) return;
+				const categoryItem = (category.data)?.filter(item => item.attribute == categoryAttribute)
+				setCategoryData(categoryItem);
+				//カテゴリページ
+			} else if (getCurrentLocation(pathname) == PAGES.CATEGORY_LIST_PAGE) {
+				//レシピ
+			} else if (getCurrentLocation(pathname) == PAGES.RECIPE_PAGE) {
+				const recipeUid = spilitRequestPathNameArray[2];
+				const fetchRecipeResult = await fetchData<RecipeType>(GetRecipeDetail + recipeUid + '/');
+				setRecipeViewData(fetchRecipeResult);
+				const fetchCategoryResult = await fetchData<CategoryType[]>(GetCategoryByRecipeUid + recipeUid + '/');
+				setRecipeViewCategory(fetchCategoryResult);
 			}
-			mounted();
-		}, [])
+		}
+		mounted();
+	}, [category])
 
 	return { categoryData, recipeViewData, recipeViewCategory }
 }
