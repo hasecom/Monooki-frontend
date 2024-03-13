@@ -19,11 +19,9 @@ const usePageSet = () => {
 					const category = spilitRequestPathNameArray[2];
 					const fetchResult = await fetchData<CategoryType[]>(GetPartCategoryEndPoint + category);
 					setCategoryData(fetchResult);
-
 					//カテゴリページ
 				} else if (spilitRequestPathNameArray.length == splitPathNameArray(PAGES.CATEGORY_LIST_PAGE).length
 					&& spilitRequestPathNameArray[1] == splitPathNameArray(PAGES.CATEGORY_LIST_PAGE)[1]) {
-
 					//レシピ
 				} else if (spilitRequestPathNameArray.length == splitPathNameArray(PAGES.RECIPE_PAGE).length
 					&& spilitRequestPathNameArray[1] == splitPathNameArray(PAGES.RECIPE_PAGE)[1]) {
