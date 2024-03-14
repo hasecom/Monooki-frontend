@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from 'next/navigation'
-import usePageSet from "@/hooks/usePageSet";
 
+import { usePresetContext } from '@/provider/preSetProvider';
 const AppHead = () =>  {
-	const { categoryData, recipeViewData, recipeViewCategory } = usePageSet();
+	
+	const { category,tag } = usePresetContext();
 	const [ogp,setOgp] = useState({
 		title:"",
 		description:"",
@@ -12,9 +13,9 @@ const AppHead = () =>  {
 	useEffect(() => {
 		setOgp(prevState => ({
 			...prevState,
-			title:categoryData ? categoryData[0].name:""
+			title:category?.data ? category.data[0].name:""
 	}));
-  }, [categoryData, recipeViewData, recipeViewCategory])
+  }, [category])
 
 	return (
 			<head>

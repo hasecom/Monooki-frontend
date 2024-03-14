@@ -1,6 +1,6 @@
 'use client'
-import { GetAllCategoryEndPoint,GetAllTagEndPoint } from '@/constant/preset';
-import { CategoryType,TagType } from '@/types/data';
+import { GetAllCategoryEndPoint,GetAllTagEndPoint, GetCategoryByRecipeUid, GetRecipeDetail } from '@/constant/preset';
+import { CategoryType,RecipeType,TagType } from '@/types/data';
 import useFetchData from '@/hooks/fetch';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import getCurrentLocation from '@/util/getCurrentLocation';
@@ -8,8 +8,10 @@ import { FetchDataResult } from '@/types/common';
 import { usePathname } from 'next/navigation';
 import { PAGES } from '@/constant/preset';
 interface ContextType {
-	category:FetchDataResult<CategoryType[]>,
-	tag:FetchDataResult<TagType[]>
+	category?:FetchDataResult<CategoryType[]>,
+	tag?:FetchDataResult<TagType[]>,
+	recipe?:FetchDataResult<RecipeType>,
+	recipeCategory?:FetchDataResult<CategoryType[]>,
 }
 type ProviderProps = {
   children: ReactNode;
@@ -17,24 +19,17 @@ type ProviderProps = {
 
 const Context = createContext<ContextType | undefined>(undefined);
 const PreSetProvider: React.FC<ProviderProps> = ({ children }) => {
-	const pathname = usePathname();
-	const {data:categoryData,loading:categoryLoading,error:categoryError } = useFetchData<CategoryType[]>(GetAllCategoryEndPoint);
-	const {data:tagData,loading:tagLoading,error:tagError } = useFetchData<TagType[]>(GetAllTagEndPoint);
-	if(getCurrentLocation(pathname) == PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE){
-		console.log("aaa")
-	}
-	const contextValue: ContextType = {
-		category:{
-			data:categoryData,
-			loading:categoryLoading,
-			error:categoryError
-		},
-		tag:{
-			data:tagData,
-			loading:tagLoading,
-			error:tagError
-		}
+//リクエストのあるURL指定
+	const {data:categoryData,loading:categoryLoading,error:categoryError } = useFetchData<CategoryType[],null>(GetAllCategoryEndPoint);
+	const {data:tagData,loading:tagLoading,error:tagError } = useFetchData<TagType[],null>(GetAllTagEndPoint);
+	const {data:recipeData,loading:recipeLoading,error:recipeError } = useFetchData<RecipeType,null>(GetRecipeDetail,[PAGES.RECIPE_PAGE]);
+	const {data:recipeCategoryData,loading:recipeCategoryLoading,error:recipeCategoryError } = useFetchData<CategoryType[],RecipeType>(GetCategoryByRecipeUid,[PAGES.RECIPE_PAGE],recipeData);
 
+	const contextValue: ContextType = {
+		category:{data:categoryData,loading:categoryLoading,error:categoryError},
+		tag:{data:tagData,loading:tagLoading,error:tagError},
+		recipe:{data:recipeData,loading:recipeLoading,error:recipeError},
+		recipeCategory:{data:recipeCategoryData,loading:recipeCategoryLoading,error:recipeCategoryError},
   };
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

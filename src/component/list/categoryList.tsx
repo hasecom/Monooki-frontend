@@ -14,8 +14,8 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 */
 const CategoryList = () => {
 	const { category } = usePresetContext();
-	const categoryData = category.data && category.data;
-	if (category.loading) return <><Skeleton /></>;
+	const categoryData = category?.data && category.data;
+	if (category?.loading) return <><Skeleton /></>;
 	const CategoryListByMainType = ({ parentCategory }: { parentCategory: CategoryType }) => {
 		return (
 			<>
