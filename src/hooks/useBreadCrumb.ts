@@ -39,7 +39,6 @@ const useBreadCrumb = () => {
 			} else if (getCurrentLocation(pathname) == PAGES.RECIPE_PAGE) {//レシピ
 				if (!recipe?.data) throw new Error;
 				const breadCrumbs = (): breadCrumbValueType[] | [] => {
-					console.log(recipeCategory)
 					if (!recipeCategory?.data) throw new Error;
 					const breadCrumbs: breadCrumbValueType[] = recipeCategory.data
 						.slice()

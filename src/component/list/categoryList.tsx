@@ -1,13 +1,15 @@
 'use client'
+import NextLink from 'next/link';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
 import { CategoryTitle, CategoryMainTitle } from "@/ui/text/title";
 import { usePresetContext } from "@/provider/preSetProvider";
 import { CategoryType } from "@/types/data";
-import { TYPES } from "@/constant/preset";
+import { PAGES, TYPES } from "@/constant/preset";
 import { Fragment } from "react";
-import { Box } from "@mui/material";
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { Box, Typography } from "@mui/material";
+
+import link from 'next/link';
 /**
 * @namespace
 * - used category page
@@ -42,13 +44,13 @@ const CategoryList = () => {
 					?.filter((category) => category.category_type == parentCategory.id)
 					.map((category, index) => (
 					<Box key={index} sx={{ display: 'inline-block', paddingX: 2, paddingY: 2 }}>
+						<NextLink href={PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE+category.attribute as string} key={index}>
+						<Typography key={index} variant={'body1'}  color="text.primary">
 						{category.name}
+						</Typography>
+					</NextLink>
 					</Box>
 				))}
-				<Box sx={{ display: 'inline-block', paddingX: 2, paddingY: 2, color: '#636e72' }}>
-					すべてを見る
-					<KeyboardArrowRightIcon />
-				</Box>
 			</>
 		)
 	}
