@@ -12,22 +12,6 @@ export const Heading = {
 	}
 }
 
-export const constantLink = [
-	{id:1,label:'プライバシーポリシー'},
-	{id:2,label:'利用規約'},
-	{id:3,label:'運営'},
-	{id:4,label:'サービスに関してのお問い合わせ'},
-]
-export const footerCategoryLinks = [
-	{
-		label:'カテゴリから探す',
-		link:''
-	},
-	{
-		label:'目的から探す',
-		link:''
-	}
-]
 export const credit = '© 2024 MONOOKI All rights reserved.'
 
 
@@ -63,12 +47,16 @@ export const GetRecipeIdList = 'monooki/get/recipeid/'
  * レシピUidから所属カテゴリーを取得 (+Uid) 
  */
 export const GetCategoryByRecipeUid = 'monooki/get/categoryByRecipeUid/'
-
+/**
+ * シングルページ（固定）を全取得
+ */
+export const GetSingleContentAll = 'monooki/get/singleContentAll/'
 export const PAGES = {
 	HOME_PAGE:"/",
 	CATEGORY_LIST_PAGE:"/category",
 	CATEGORY_RECIPE_MAP_LIST_PAGE:"/category/",//category/category_attribute
 	RECIPE_PAGE:'/recipe/',//recipe/recipe_uid
+	SINGLE_PAGE:'/single/'
 }
 
 
@@ -112,3 +100,14 @@ export const COMMON_CRUMBS = {
 		isLink: true
 	}	
 }
+
+export const footerCategoryLinks = [
+	{
+		label:'カテゴリから探す',
+		link:PAGES.CATEGORY_LIST_PAGE
+	},
+	{
+		label:'目的から探す',
+		link:''
+	}
+]

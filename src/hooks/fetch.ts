@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import {  GetCategoryByRecipeUid, GetRecipeDetail } from '@/constant/preset';
 import getCurrentLocation from '@/util/getCurrentLocation';
 import { RecipeType } from '@/types/data';
-const useFetchData = <T,U>(endpoint: string,isArg:boolean,requestArray: string[] | null= null,referData?:any): FetchDataResult<T> => {
+const useFetchData = <T,U = null>(endpoint: string,isArg:boolean,requestArray: string[] | null= null,referData?:any): FetchDataResult<T> => {
 	const [data, setData] = useState<T | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<Error | null>(null);

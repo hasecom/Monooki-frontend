@@ -3,7 +3,6 @@ import MainLayout from "@/layout/mainLayout";
 import CategoryList from "@/component/list/categoryList";
 import { Box } from "@mui/material";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
-
 const  Category = () => {
   return (
 		<MainLayout>

@@ -1,24 +1,31 @@
 'use client'
 import { isScreenSizeAbove } from "@/util/mediaQuery";
-import { Box, Grid, List, ListItem, Typography, ListItemText } from "@mui/material";
-import { constantLink, credit, footerCategoryLinks, Heading } from "@/constant/preset";
+import { Box, Grid, List, ListItem, Typography, ListItemText, ListItemButton } from "@mui/material";
+import { credit, footerCategoryLinks, Heading, PAGES } from "@/constant/preset";
 import { NextPage } from "next";
-import { constantLinkType,footerCategoryLinksType } from "@/types/common";
+import { footerCategoryLinksType } from "@/types/common";
+import { usePresetContext } from '@/provider/preSetProvider';
+import { SingleContentType } from "@/types/data";
+import NextLink from 'next/link';
 const Footer = () => {
+	const { singleContent } = usePresetContext();
+	const footerSingleContent = (singleContent?.data) ? singleContent.data.filter(item => item.content_type == 1) : [];
 	return (
 		<>
 			{isScreenSizeAbove('sm') ? (
-				<PcFooter />
+				<PcFooter footerLinks={footerSingleContent} />
 			) : (
-				<SmFooter />
+				<SmFooter footerLinks={footerSingleContent} />
 			)}
 		</>
 	)
 }
 
 export default Footer;
-
-const PcFooter = () => {
+type FooterBodyProps = {
+	footerLinks: SingleContentType[]
+}
+const PcFooter = ({ footerLinks }: FooterBodyProps) => {
 	return (
 		<Box sx={{
 			minHeight: '300px',
@@ -29,16 +36,17 @@ const PcFooter = () => {
 			<Grid container spacing={2} justifyContent="center">
 				<Grid item xs={3}></Grid>
 				<PcFooterGrid headingText={Heading.Footer.AboutService} links={footerCategoryLinks} />
-				<PcFooterGrid headingText={Heading.Footer.AboutService} links={constantLink} />
+				<PcFooterGrid headingText={Heading.Footer.AboutService} links={footerLinks} />
 			</Grid>
 		</Box>
 	)
 }
 type PcFooterGridTypes = {
-	headingText:string,
-	links:constantLinkType[] | footerCategoryLinksType[]
-} 
-const PcFooterGrid:NextPage<PcFooterGridTypes> = ({headingText,links}) => {
+	headingText: string,
+	links: SingleContentType[] | footerCategoryLinksType[]
+}
+const PcFooterGrid: NextPage<PcFooterGridTypes> = ({ headingText, links }) => {
+	if (!links) return <></>;
 	return (
 		<Grid item xs={3}>
 			<Typography variant="body1" component="div" sx={{ paddingX: 2 }}>
@@ -46,14 +54,21 @@ const PcFooterGrid:NextPage<PcFooterGridTypes> = ({headingText,links}) => {
 			</Typography>
 			<List>
 				{links.map((link, index) => (
-					<ListItem key={index}><ListItemText secondary={link.label} /></ListItem>
+					<ListItem key={index}>
+						<ListItemButton component="a" key={index} href={
+							isSingleContentType(link) ?
+								`${PAGES.SINGLE_PAGE}/${link.attribute}` : `${link.link}`
+						} >
+							<ListItemText secondary={isSingleContentType(link) ? link.title : link.label} />
+						</ListItemButton>
+					</ListItem>
 				))}
 			</List>
 		</Grid>
 	)
 }
 
-const SmFooter = () => {
+const SmFooter = ({ footerLinks }: FooterBodyProps) => {
 	return (
 		<Box sx={{ minHeight: '300px', background: '#ededed' }}>
 			<Box
@@ -65,9 +80,14 @@ const SmFooter = () => {
 				}}
 			>
 				<Grid container columns={{ xs: 4, md: 4 }}>
-					{constantLink.map((link, index) => (
+					{footerLinks.map((link, index) => (
 						<Grid item key={index} sx={{ margin: '0 auto' }}>
-							<Typography variant="body2">{link.label}</Typography>
+							<NextLink href={`${PAGES.SINGLE_PAGE}/${link.attribute}`} key={index} >
+								<Typography key={index} variant={'body2'}  className="hover:underline">
+									{link.title}
+								</Typography>
+							</NextLink>
+							
 						</Grid>
 					))}
 				</Grid>
@@ -77,4 +97,7 @@ const SmFooter = () => {
 			</Box>
 		</Box>
 	)
+}
+const isSingleContentType = (link: SingleContentType | footerCategoryLinksType): link is SingleContentType => {
+	return (link as SingleContentType).title !== undefined;
 }

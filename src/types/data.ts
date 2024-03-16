@@ -32,3 +32,10 @@ export type ContentType = {
 	description:string,
 	order:string | number
 }
+export type SingleContentType = {
+	id?:number,
+	attribute:string,
+	title?:string,
+	description?:string,
+	content_type?:number
+}

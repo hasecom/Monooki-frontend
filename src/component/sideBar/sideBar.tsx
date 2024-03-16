@@ -4,6 +4,7 @@ import CategoryTags from "../widget/categoryTags";
 import { tagFilterByTagType } from "@/util/formatter";
 const SideBar = () => {
 	const { tag } = usePresetContext();
+	if(!tag) return <></>
 	const filteredTags = tagFilterByTagType({tags:tag.data,tagType:2})
 	return (
 		<>

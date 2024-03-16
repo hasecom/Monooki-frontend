@@ -10,7 +10,8 @@ import { categoryFilterByClassName, tagFilterByTagType } from "@/util/formatter"
 
 const CategoryTabs = () => {
 	const { category,tag } = usePresetContext();
-	const filteredCategies = categoryFilterByClassName({categories:category.data,className:1})
+	if(!category || !tag) return <></>;
+	const filteredCategies = categoryFilterByClassName({categories:category.data,className:3})
 	const filteredTags = tagFilterByTagType({tags:tag.data,tagType:2})
 	const [value, setValue] = useState("1");
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {

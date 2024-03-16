@@ -28,10 +28,6 @@ export type RecipeContentType = {
 フッター
 #######
 */
-export type constantLinkType = {
-	id:number,
-	label:string
-}
 export type footerCategoryLinksType = {
 	label:string,
 	link:string

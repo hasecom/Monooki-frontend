@@ -9,12 +9,12 @@ import { PAGES, TYPES } from "@/constant/preset";
 import { Fragment } from "react";
 import { Box, Typography } from "@mui/material";
 
-import link from 'next/link';
 /**
 * @namespace
 * - used category page
 */
 const CategoryList = () => {
+
 	const { category } = usePresetContext();
 	const categoryData = category?.data && category.data;
 	if (category?.loading) return <><Skeleton /></>;
@@ -28,9 +28,11 @@ const CategoryList = () => {
 							<Grid item xs={3} md={3}>
 								<Skeleton variant="rectangular" width={'50px'} height={'50px'} />
 							</Grid>
-							<Grid item xs={9} md={9}>
-								<CategoryTitle>{category.name}</CategoryTitle>
-								<CategoryListBySubType parentCategory={category} />
+							<Grid item xs={9} md={9} >
+								<Box id={category.attribute}>
+									<CategoryTitle>{category.name}</CategoryTitle>
+									<CategoryListBySubType parentCategory={category} />
+								</Box>
 							</Grid>
 						</Grid>
 					))}
@@ -43,14 +45,14 @@ const CategoryList = () => {
 				{(categoryData)
 					?.filter((category) => category.category_type == parentCategory.id)
 					.map((category, index) => (
-					<Box key={index} sx={{ display: 'inline-block', paddingX: 2, paddingY: 2 }}>
-						<NextLink href={PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE+category.attribute as string} key={index}>
-						<Typography key={index} variant={'body1'}  color="text.primary">
-						{category.name}
-						</Typography>
-					</NextLink>
-					</Box>
-				))}
+						<Box key={index} sx={{ display: 'inline-block', paddingX: 2, paddingY: 2 }}>
+							<NextLink href={PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE + category.attribute as string} key={index}>
+								<Typography key={index} variant={'body1'} color="text.primary" className="hover:underline" id={category.attribute}>
+									{category.name}
+								</Typography>
+							</NextLink>
+						</Box>
+					))}
 			</>
 		)
 	}

@@ -13,11 +13,12 @@ import { useRouter } from 'next/navigation';
 import { PAGES } from '@/constant/preset';
 type MainAccordionProps = {
 	category:CategoryType[] | null,
-	tag:TagType[] | null
+	tag:TagType[] | null 
 }
 const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
 	const router = useRouter();
-	const filteredCategies = categoryFilterByClassName({categories:category,className:2})
+
+	const filteredCategies = categoryFilterByClassName({categories:category,className:3})
 	const filteredTags = tagFilterByTagType({tags:tag,tagType:2})
 	const [isHovered, setIsHovered] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);

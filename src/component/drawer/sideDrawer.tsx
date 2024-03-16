@@ -7,9 +7,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Heading } from '@/constant/preset';
+import { Heading, PAGES, TYPES } from '@/constant/preset';
 
 import { CategoryType,TagType } from '@/types/data';
+import { usePresetContext } from '@/provider/preSetProvider';
 
 const SideDrawerAccordion = ({ heading, children }: { heading: string, children: ReactNode }) => {
 	return (
@@ -33,10 +34,12 @@ type SideDrawerAccordionDetailsProps = {
 }
 const SideDrawerAccordionDetails: NextPage<SideDrawerAccordionDetailsProps> = ({ category, length = 5 }) => {
 	if(!category) return <></>;
+	const categoryItems = category.filter((item) => item.class_name == TYPES.CATEGORY.CATEGORY_SUB_SUB_CATEGORY)
 	return (
 		<>
-			{category.slice(0, length).map((item, index) => (
-				<ListItemButton component="a" key={index} href="#simple-list" >
+		 
+			{categoryItems.slice(0, length).map((item, index) => (
+				<ListItemButton component="a" key={index} href={`${PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE}/${item.attribute}`} >
 					<ListItemText
 						primary={item.name}
 						primaryTypographyProps={{
@@ -61,6 +64,7 @@ export type SideDrawerProps = {
 }
 
 const SideDrawer: NextPage<SideDrawerProps> = (props) => {
+	const { singleContent } = usePresetContext();
 	return (
 		<Drawer open={props.isOpen} onClose={props.toggle}>
 			<List sx={{ maxWidth: '250px' }}>
@@ -70,10 +74,10 @@ const SideDrawer: NextPage<SideDrawerProps> = (props) => {
 				<SideDrawerAccordion heading={Heading.Category.PurposeSearch}>
 					<SideDrawerAccordionDetails category={props.tag} length={10} />
 				</SideDrawerAccordion>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemText primary={text} />
+				{singleContent?.data && singleContent.data.map((content, index) => (
+					<ListItem key={index} disablePadding>
+						<ListItemButton component="a" key={index} href={`${PAGES.SINGLE_PAGE}/${content.attribute}`} >
+							<ListItemText primary={content.title} />
 						</ListItemButton>
 					</ListItem>
 				))}
