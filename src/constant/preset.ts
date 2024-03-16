@@ -30,7 +30,10 @@ export const GetPartCategoryEndPoint = 'monooki/get/category/?attribute=';
  * タグ全取得
 */
 export const GetAllTagEndPoint = 'monooki/get/tag/'
-
+/**
+ * タグ特定取得（?attribute=attribute_name)
+*/
+export const GetPartTagEndPoint = 'monooki/get/tag/?attribute=';
 /**
  * レシピ詳細取得(+recipe_uid)
 */
@@ -40,6 +43,12 @@ export const GetRecipeDetail = 'monooki/get/recipe/'
 */
 export const GetRecipeDetailByCategory = 'monooki/get/recipeCategoryMap/?id='
 /**
+ * レシピ詳細取得(タグ)
+*/
+export const GetRecipeDetailByTag = 'monooki/get/recipeTagMap/?id='
+
+/**
+ * 
  * レシピIDリスト取得
  */
 export const GetRecipeIdList = 'monooki/get/recipeid/'
@@ -60,6 +69,8 @@ export const PAGES = {
 	HOME_PAGE:"/",
 	CATEGORY_LIST_PAGE:"/category",
 	CATEGORY_RECIPE_MAP_LIST_PAGE:"/category/",//category/category_attribute
+	TAG_LIST_PAGE:"/tag",
+	TAG_RECIPE_MAP_LIST_PAGE:"/tag/",//category/category_attribute
 	RECIPE_PAGE:'/recipe/',//recipe/recipe_uid
 	SINGLE_PAGE:'/single/'
 }
@@ -103,7 +114,12 @@ export const COMMON_CRUMBS = {
 		name: "カテゴリ",
 		path:PAGES.CATEGORY_LIST_PAGE,
 		isLink: true
-	}	
+	},
+	TAG:{
+		name: "タグ",
+		path:PAGES.TAG_LIST_PAGE,
+		isLink: true
+	},
 }
 
 export const footerCategoryLinks = [

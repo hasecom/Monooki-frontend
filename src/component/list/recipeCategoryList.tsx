@@ -10,7 +10,7 @@ type RecipeListProps = {
 	categoryId?: CategoryType['id']
 }
 
-const RecipeList: NextPage<RecipeListProps> = async ({ categoryId }) => {
+const RecipeCategoryList: NextPage<RecipeListProps> = async ({ categoryId }) => {
 	const recipeList = await ssgGetFetch<RecipeType[]>(GetRecipeDetailByCategory + categoryId);
 	if (!recipeList) return <></>;
 	return (
@@ -32,5 +32,5 @@ const RecipeList: NextPage<RecipeListProps> = async ({ categoryId }) => {
 		</List>
 	)
 }
-export default RecipeList;
+export default RecipeCategoryList;
 

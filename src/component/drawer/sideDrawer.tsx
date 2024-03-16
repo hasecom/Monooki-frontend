@@ -9,7 +9,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Heading, PAGES, TYPES } from '@/constant/preset';
 
-import { CategoryType,TagType } from '@/types/data';
+import { CategoryType, TagType } from '@/types/data';
 import { usePresetContext } from '@/provider/preSetProvider';
 
 const SideDrawerAccordion = ({ heading, children }: { heading: string, children: ReactNode }) => {
@@ -29,15 +29,14 @@ const SideDrawerAccordion = ({ heading, children }: { heading: string, children:
 	)
 }
 type SideDrawerAccordionDetailsProps = {
-	category:CategoryType[] | TagType[]  | null,
-	length:number
+	category: CategoryType[] | TagType[] | null,
+	length: number
 }
 const SideDrawerAccordionDetails: NextPage<SideDrawerAccordionDetailsProps> = ({ category, length = 5 }) => {
-	if(!category) return <></>;
+	if (!category) return <></>;
 	const categoryItems = category.filter((item) => item.class_name == TYPES.CATEGORY.CATEGORY_SUB_SUB_CATEGORY)
 	return (
 		<>
-		 
 			{categoryItems.slice(0, length).map((item, index) => (
 				<ListItemButton component="a" key={index} href={`${PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE}/${item.attribute}`} >
 					<ListItemText
@@ -48,8 +47,8 @@ const SideDrawerAccordionDetails: NextPage<SideDrawerAccordionDetailsProps> = ({
 							lineHeight: '15px',
 							mb: '3px',
 							whiteSpace: 'nowrap',
-							overflow :'hidden', 
-							textOverflow: 'ellipsis' 
+							overflow: 'hidden',
+							textOverflow: 'ellipsis'
 						}} />
 				</ListItemButton>
 			))}
@@ -57,10 +56,10 @@ const SideDrawerAccordionDetails: NextPage<SideDrawerAccordionDetailsProps> = ({
 	)
 }
 export type SideDrawerProps = {
-	isOpen:boolean,
-	toggle:()=>void,
-	category:CategoryType[] | null,
-	tag:TagType[] | null
+	isOpen: boolean,
+	toggle: () => void,
+	category: CategoryType[] | null,
+	tag: TagType[] | null
 }
 
 const SideDrawer: NextPage<SideDrawerProps> = (props) => {
@@ -77,7 +76,17 @@ const SideDrawer: NextPage<SideDrawerProps> = (props) => {
 				{singleContent?.data && singleContent.data.map((content, index) => (
 					<ListItem key={index} disablePadding>
 						<ListItemButton component="a" key={index} href={`${PAGES.SINGLE_PAGE}/${content.attribute}`} >
-							<ListItemText primary={content.title} />
+							<ListItemText primary={content.title}
+								primaryTypographyProps={{
+									fontSize: 14,
+									fontWeight: 'medium',
+									lineHeight: '15px',
+									mb: '3px',
+									whiteSpace: 'nowrap',
+									overflow: 'hidden',
+									textOverflow: 'ellipsis'
+								}}
+							/>
 						</ListItemButton>
 					</ListItem>
 				))}

@@ -2,7 +2,7 @@
 import NextLink from 'next/link';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
-import { CategoryTitle, CategoryMainTitle } from "@/ui/text/title";
+import { CategoryTitle, CategoryAndTagMainTitle } from "@/ui/text/title";
 import { usePresetContext } from "@/provider/preSetProvider";
 import { CategoryType } from "@/types/data";
 import { PAGES, TYPES } from "@/constant/preset";
@@ -62,7 +62,7 @@ const CategoryList = () => {
 				?.filter((category) => category.class_name == TYPES.CATEGORY.CATEGORY_MAIN_CATEGORY)
 				.map((category, index) => (
 					<Fragment key={index}>
-						<CategoryMainTitle>{category.name}</CategoryMainTitle>
+						<CategoryAndTagMainTitle>{category.name}</CategoryAndTagMainTitle>
 						<CategoryListByMainType parentCategory={category} />
 					</Fragment>
 				))}

@@ -6,6 +6,7 @@ export type CategoryType = {
 	category_type:number//親categoryId
 }
 export type TagType = {
+	id:number,
 	name:string,
 	class_name:number,
 	attribute:string,
