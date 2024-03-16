@@ -51,6 +51,11 @@ export const GetCategoryByRecipeUid = 'monooki/get/categoryByRecipeUid/'
  * シングルページ（固定）を全取得
  */
 export const GetSingleContentAll = 'monooki/get/singleContentAll/'
+/**
+ * シングルページ（固定）を全取得(+attribute)
+ */
+export const SingleContentGetByAttributeView = 'monooki/get/singleContentByAttribute/'
+
 export const PAGES = {
 	HOME_PAGE:"/",
 	CATEGORY_LIST_PAGE:"/category",

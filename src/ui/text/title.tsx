@@ -32,5 +32,10 @@ const RecipeListTitle:NextPage<ReactNodeProp> = ({children}) => {
 		<Typography variant="body1" sx={{fontSize:'1.15em',paddingY:2}}>{children}</Typography>
 	)
 }
+const PageTitle:NextPage<ReactNodeProp> = ({children}) => {
+	return (
+		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
+	)
+}
 
-export {CategoryTagsTitle,CategoryTitle,RecipeHeading,RecipeFlowHeading,CategoryMainTitle,RecipeListTitle}
+export {CategoryTagsTitle,CategoryTitle,RecipeHeading,RecipeFlowHeading,CategoryMainTitle,RecipeListTitle,PageTitle}
