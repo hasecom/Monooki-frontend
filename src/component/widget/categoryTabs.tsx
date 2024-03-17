@@ -4,9 +4,10 @@ import { Tab } from "@mui/material"
 import { TabPanel, TabContext,TabList } from '@mui/lab';
 import { Heading } from "@/constant/preset";
 import { isScreenSizeAbove } from "@/util/mediaQuery";
-import { CategoryPaperLink } from "@/ui/link/categoryLink";
+import { CategoryPaperLink,TagPaperLink } from "@/ui/link/categoryLink";
 import { usePresetContext } from "@/provider/preSetProvider";
 import { categoryFilterByClassName, tagFilterByTagType } from "@/util/formatter";
+
 
 const CategoryTabs = () => {
 	const { category,tag } = usePresetContext();
@@ -31,10 +32,10 @@ const CategoryTabs = () => {
 						<Tab label={Heading.Category.PurposeSearch} value="2" />
 					</TabList>
 				<TabPanel value="1">
-					<CategoryPaperLink category={filteredCategies}  />
+					<CategoryPaperLink category={filteredCategies}   />
 				</TabPanel>
 				<TabPanel value="2">
-				<CategoryPaperLink category={filteredTags}  />
+				<TagPaperLink category={filteredTags} />
 				</TabPanel>
 			</TabContext>
 		</>

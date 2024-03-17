@@ -12,7 +12,7 @@ const CategoryGridPapers:NextPage<CategoryLinkProps | TagLinkProps> = ({category
     <Grid container>
 			{category.slice(0, length).map((item, index) => (
       <Grid item xs={4} key={index} sx={{marginY:0.1}}>
-        <Paper elevation={0} variant="outlined" sx={{marginX:0.2,paddingX:1,paddingY:1,height: '100%'}}>
+        <Paper elevation={0} variant="outlined" sx={{paddingX:1,paddingY:1,height: '100%'}}>
 					<Typography variant="subtitle2">
 						{item.name}
 					</Typography>

@@ -20,22 +20,41 @@ const CategoryLink: NextPage<CategoryLinkProps | TagLinkProps> = ({ category, le
 				</Box>
 			))}
 			<Box sx={{ display: 'inline-block', paddingX: 2, paddingY: 2, color: '#636e72' }}>
-				<Link href={PAGES.CATEGORY_LIST_PAGE}>すべてを見る</Link>
+				<Link href={PAGES.CATEGORY_LIST_PAGE}>
+						すべてを見る
+				</Link>
 				<KeyboardArrowRightIcon />
 			</Box>
 		</Box>
 	)
 }
-const CategoryPaperLink: NextPage<CategoryLinkProps | TagLinkProps> = (props) => {
+
+const CategoryPaperLink: NextPage<CategoryLinkProps> = (props) => {
 	return (
 		<>
 			<CategoryGridPapers {...props} />
 			<Box sx={{ textAlign: 'right', paddingY: 2, color: '#636e72' }}>
-				<Typography variant="subtitle2">
-					すべてを見る<KeyboardArrowRightIcon />
-				</Typography>
+				<Link href={PAGES.CATEGORY_LIST_PAGE}>
+					<Typography variant="subtitle2">
+						すべてを見る<KeyboardArrowRightIcon />
+					</Typography>
+				</Link>
 			</Box>
 		</>
 	)
 }
-export { CategoryLink, CategoryPaperLink }
+const TagPaperLink: NextPage<TagLinkProps> = (props) => {
+	return (
+		<>
+			<CategoryGridPapers {...props} />
+			<Box sx={{ textAlign: 'right', paddingY: 2, color: '#636e72' }}>
+				<Link href={PAGES.TAG_LIST_PAGE}>
+					<Typography variant="subtitle2">
+						すべてを見る<KeyboardArrowRightIcon />
+					</Typography>
+				</Link>
+			</Box>
+		</>
+	)
+}
+export { CategoryLink, CategoryPaperLink,TagPaperLink }
