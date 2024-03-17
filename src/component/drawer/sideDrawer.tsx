@@ -29,16 +29,39 @@ const SideDrawerAccordion = ({ heading, children }: { heading: string, children:
 	)
 }
 type SideDrawerAccordionDetailsProps = {
-	category: CategoryType[] | TagType[] | null,
+	items: CategoryType[] | TagType[] | null,
+	itemType: string
 	length: number
 }
-const SideDrawerAccordionDetails: NextPage<SideDrawerAccordionDetailsProps> = ({ category, length = 5 }) => {
-	if (!category) return <></>;
-	const categoryItems = category.filter((item) => item.class_name == TYPES.CATEGORY.CATEGORY_SUB_SUB_CATEGORY)
+const SideDrawerAccordionDetailsCategory: NextPage<SideDrawerAccordionDetailsProps> = ({ items, length = 5 }) => {
+	if (!items) return <></>;
+	const categoryItems = items.filter((item) => item.class_name == TYPES.CATEGORY.CATEGORY_SUB_SUB_CATEGORY)
 	return (
 		<>
 			{categoryItems.slice(0, length).map((item, index) => (
 				<ListItemButton component="a" key={index} href={`${PAGES.CATEGORY_RECIPE_MAP_LIST_PAGE}/${item.attribute}`} >
+					<ListItemText
+						primary={item.name}
+						primaryTypographyProps={{
+							fontSize: 14,
+							fontWeight: 'medium',
+							lineHeight: '15px',
+							mb: '3px',
+							whiteSpace: 'nowrap',
+							overflow: 'hidden',
+							textOverflow: 'ellipsis'
+						}} />
+				</ListItemButton>
+			))}
+		</>
+	)
+}
+const SideDrawerAccordionDetailsTag: NextPage<SideDrawerAccordionDetailsProps> = ({ items, length = 5 }) => {
+	if (!items) return <></>;
+	return (
+		<>
+			{items.slice(0, length).map((item, index) => (
+				<ListItemButton component="a" key={index} href={`${PAGES.TAG_RECIPE_MAP_LIST_PAGE}/${item.attribute}`} >
 					<ListItemText
 						primary={item.name}
 						primaryTypographyProps={{
@@ -62,16 +85,17 @@ export type SideDrawerProps = {
 	tag: TagType[] | null
 }
 
+
 const SideDrawer: NextPage<SideDrawerProps> = (props) => {
 	const { singleContent } = usePresetContext();
 	return (
 		<Drawer open={props.isOpen} onClose={props.toggle}>
 			<List sx={{ maxWidth: '250px' }}>
 				<SideDrawerAccordion heading={Heading.Category.CategorySearch}>
-					<SideDrawerAccordionDetails category={props.category} length={10} />
+					<SideDrawerAccordionDetailsCategory items={props.category} itemType="category" length={10} />
 				</SideDrawerAccordion>
 				<SideDrawerAccordion heading={Heading.Category.PurposeSearch}>
-					<SideDrawerAccordionDetails category={props.tag} length={10} />
+					<SideDrawerAccordionDetailsTag items={props.tag} itemType="tag" length={10} />
 				</SideDrawerAccordion>
 				{singleContent?.data && singleContent.data.map((content, index) => (
 					<ListItem key={index} disablePadding>
