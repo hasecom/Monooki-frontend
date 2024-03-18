@@ -7,10 +7,20 @@ import { isScreenSizeAbove } from "@/util/mediaQuery";
 import { CategoryPaperLink,TagPaperLink } from "@/ui/link/categoryLink";
 import { usePresetContext } from "@/provider/preSetProvider";
 import { categoryFilterByClassName, tagFilterByTagType } from "@/util/formatter";
+import { makeStyles } from '@material-ui/core/styles';
 
-
+const useStyles = makeStyles((theme) => ({
+  tabPanel: {
+		padding:0,
+		marginTop:'1em'
+  },
+	tab:{
+		borderRadius:0
+	}
+}));
 const CategoryTabs = () => {
 	const { category,tag } = usePresetContext();
+	const classes = useStyles();
 	if(!category || !tag) return <></>;
 	const filteredCategies = categoryFilterByClassName({categories:category.data,className:3})
 	const filteredTags = tagFilterByTagType({tags:tag.data,tagType:2})
@@ -31,10 +41,10 @@ const CategoryTabs = () => {
 						<Tab label={Heading.Category.CategorySearch} value="1" />
 						<Tab label={Heading.Category.PurposeSearch} value="2" />
 					</TabList>
-				<TabPanel value="1">
+				<TabPanel value="1" classes={{ root: classes.tabPanel }}>
 					<CategoryPaperLink category={filteredCategies}   />
 				</TabPanel>
-				<TabPanel value="2">
+				<TabPanel value="2" classes={{ root: classes.tabPanel }}>
 				<TagPaperLink category={filteredTags} />
 				</TabPanel>
 			</TabContext>

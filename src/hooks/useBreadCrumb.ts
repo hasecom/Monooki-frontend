@@ -76,7 +76,7 @@ const useBreadCrumb = () => {
 				addCurrentLocation({ newBreadcrumbItems: breadcrumbItems })
 			} 
 		} catch (error) { }
-	}, [category, recipe, recipeCategory])
+	}, [ category, tag, recipe, recipeCategory, singleContent ])
 	return { breadCrumbValue }
 }
 export default useBreadCrumb;

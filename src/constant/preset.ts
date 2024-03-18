@@ -1,3 +1,6 @@
+export const Service = {
+	ServiceNameEn:"MONOOKI"
+}
 export const Heading = {
 	Category:{
 		CategorySearch:"カテゴリから探す",

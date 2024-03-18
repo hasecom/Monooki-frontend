@@ -12,8 +12,8 @@ const CategoryGridPapers:NextPage<CategoryLinkProps | TagLinkProps> = ({category
     <Grid container>
 			{category.slice(0, length).map((item, index) => (
       <Grid item xs={4} key={index} sx={{marginY:0.1}}>
-        <Paper elevation={0} variant="outlined" sx={{paddingX:1,paddingY:1,height: '100%'}}>
-					<Typography variant="subtitle2">
+        <Paper elevation={0}  sx={{paddingX:0.2,paddingY:1,height: '100%',textAlign:'center',borderRadius:'0px'}}>
+					<Typography variant="body2">
 						{item.name}
 					</Typography>
         </Paper>
