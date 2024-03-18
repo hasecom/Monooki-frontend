@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { Tabs } from '@mui/material';
 import { CategoryLink } from '@/ui/link/categoryLink';
-import { isScreenSizeAbove } from "@/util/mediaQuery";
+import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 import { Heading } from '@/constant/preset';
 import { NextPage } from 'next';
 import { CategoryType, TagType } from '@/types/data';
@@ -22,7 +22,7 @@ const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
 	const filteredTags = tagFilterByTagType({tags:tag,tagType:2})
 	const [isHovered, setIsHovered] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);
-	if(!isScreenSizeAbove('sm'))return (<></>);//スマホサイズは非表示
+	if(!useIsScreenSizeAbove('sm'))return (<></>);//スマホサイズは非表示
 
 	const handleMouseEnter = (num: number) => {
 		setSelectedTab(num);

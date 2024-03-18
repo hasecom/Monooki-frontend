@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
-
+import Head from "next/head";
 import { usePresetContext } from '@/provider/preSetProvider';
 import getCurrentLocation from "@/util/getCurrentLocation";
 import { PAGES, Service } from "@/constant/preset";
@@ -66,14 +66,14 @@ const AppHead = () => {
 	}, [category, tag, recipe, singleContent])
 
 	return (
-		<head>
+		<Head>
 			<title>{ogp.title}</title>
 			<meta property="og:title" content={ogp.title} />
 			<meta property="og:site_name" content={ogp.title} />
 			<meta property="og:description" content={ogp.description} />
 			<meta property="og:image" content={ogp.image ? ogp.image : ""} />
 			<meta name="robots" content="index, follow" />
-		</head>
+		</Head>
 	)
 }
 

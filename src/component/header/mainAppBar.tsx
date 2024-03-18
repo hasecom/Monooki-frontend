@@ -18,9 +18,9 @@ import SearchInputForm from '../search/searchInput';
 
 const MainAppBar:NextPage<MainAppBarProps> = (props) => {
 	const { category,tag } = usePresetContext();
+	const [isOpen, toggleOpen] = useCycle(false, true);
 	if(!category || !tag) return <></>;
 	//ハンバーガー
-	const [isOpen, toggleOpen] = useCycle(false, true);
 	const toggle = () => {
 		toggleOpen();
 	};

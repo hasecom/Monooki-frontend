@@ -4,7 +4,7 @@ import RecipeVideo from "./recipeVideo";
 import { NextPage } from "next";
 import { RecipeHeading, RecipeFlowHeading } from "@/ui/text/title";
 import RecipeFlow from "./recipeFlow";
-import { isScreenSizeAbove } from "@/util/mediaQuery";
+import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 import Divider from '@mui/material/Divider';
 import { MainContentText } from "@/ui/text/content";
 import { RecipeType } from "@/types/data";
@@ -12,8 +12,9 @@ type RecipeGroupProps = {
 	recipe:RecipeType | null
 }
 const RecipeGroup: NextPage<RecipeGroupProps> = ({ recipe }) => {
+	const isScreenSizeAboveSm = useIsScreenSizeAbove('sm')
 	if(!recipe) return <>NotFound.</>
-	if (isScreenSizeAbove('sm')) {//pc
+	if (isScreenSizeAboveSm) {//pc
 		return (
 			<Box>
 				<RecipeVideo videoUrl={recipe.videoUrl} />

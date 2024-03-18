@@ -3,9 +3,9 @@ import MainLayout from "@/layout/mainLayout";
 import TopList from "@/component/widget/topList";
 import CategoryTabs from "@/component/widget/categoryTabs";
 import { Box } from "@mui/material";
-import { isScreenSizeAbove } from "@/util/mediaQuery";
+import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 export default function Home() {
-	const isScreenSizeAboveSm = isScreenSizeAbove('sm');
+	const isScreenSizeAboveSm = useIsScreenSizeAbove('sm');
 	return (
 		<MainLayout isBreadCrumbs={false}>
 			<Box sx={isScreenSizeAboveSm ? 

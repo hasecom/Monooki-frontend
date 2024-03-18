@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Tab } from "@mui/material"
 import { TabPanel, TabContext,TabList } from '@mui/lab';
 import { Heading } from "@/constant/preset";
-import { isScreenSizeAbove } from "@/util/mediaQuery";
+import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 import { CategoryPaperLink,TagPaperLink } from "@/ui/link/categoryLink";
 import { usePresetContext } from "@/provider/preSetProvider";
 import { categoryFilterByClassName, tagFilterByTagType } from "@/util/formatter";
@@ -21,14 +21,16 @@ const useStyles = makeStyles((theme) => ({
 const CategoryTabs = () => {
 	const { category,tag } = usePresetContext();
 	const classes = useStyles();
+	const [value, setValue] = useState("1");
+	const isScreenSizeAboveSm = useIsScreenSizeAbove('sm')
 	if(!category || !tag) return <></>;
 	const filteredCategies = categoryFilterByClassName({categories:category.data,className:3})
 	const filteredTags = tagFilterByTagType({tags:tag.data,tagType:2})
-	const [value, setValue] = useState("1");
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		setValue(newValue);
 	};
-	if(isScreenSizeAbove('sm'))return (<></>);//スマホサイズは非表示
+	
+	if(isScreenSizeAboveSm)return (<></>);//スマホサイズは非表示
 	return (
 		<>
 			<TabContext value={value} >

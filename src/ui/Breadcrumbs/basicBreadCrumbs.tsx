@@ -5,10 +5,10 @@ import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Divider, Typography } from '@mui/material';
 import { useBreadCrumbContext } from '@/provider/breadCrumbProvider';
-import { isScreenSizeAbove } from '@/util/mediaQuery';
+import { useIsScreenSizeAbove } from '@/hooks/useMediaQuery';
 const BasicBreadCrumbs = () => {
 	const { breadCrumbValue } = useBreadCrumbContext();
-	const isScreenSizeAboveMd = isScreenSizeAbove('sm');
+	const isScreenSizeAboveMd = useIsScreenSizeAbove('sm');
 	const breadcrumbs = [
 		...breadCrumbValue.map((link, index) => {
 

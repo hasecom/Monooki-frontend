@@ -7,10 +7,10 @@ import Footer from "@/component/footer/footer";
 import { Grid } from "@mui/material";
 import SideBar from "@/component/sideBar/sideBar";
 import { Box } from "@mui/system";
-import { isScreenSizeAbove } from "@/util/mediaQuery";
+import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 import BasicBreadCrumbs from "@/ui/Breadcrumbs/basicBreadCrumbs";
 const MainLayout: NextPage<LayoutProps & mainLayoutOptionType> = ({ children, isBreadCrumbs = true }) => {
-	const isScreenSizeAboveSm = isScreenSizeAbove('sm');
+	const isScreenSizeAboveSm = useIsScreenSizeAbove('sm');
 	return (
 		<>
 				<BreadCrumbProvider>

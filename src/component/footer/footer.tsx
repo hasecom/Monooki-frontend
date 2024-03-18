@@ -1,5 +1,5 @@
 'use client'
-import { isScreenSizeAbove } from "@/util/mediaQuery";
+import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 import { Box, Grid, List, ListItem, Typography, ListItemText, ListItemButton } from "@mui/material";
 import { credit, footerCategoryLinks, Heading, PAGES } from "@/constant/preset";
 import { NextPage } from "next";
@@ -12,7 +12,7 @@ const Footer = () => {
 	const footerSingleContent = (singleContent?.data) ? singleContent.data.filter(item => item.content_type == 1) : [];
 	return (
 		<>
-			{isScreenSizeAbove('sm') ? (
+			{useIsScreenSizeAbove('sm') ? (
 				<PcFooter footerLinks={footerSingleContent} />
 			) : (
 				<SmFooter footerLinks={footerSingleContent} />
