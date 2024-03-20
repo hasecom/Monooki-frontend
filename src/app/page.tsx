@@ -4,8 +4,15 @@ import TopList from "@/component/widget/topList";
 import CategoryTabs from "@/component/widget/categoryTabs";
 import { Box } from "@mui/material";
 import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
+import {  usePresetContext } from "@/provider/preSetProvider";
+import { useEffect } from "react";
+import { PAGE_NAMES } from "@/constant/preset";
 export default function Home() {
 	const isScreenSizeAboveSm = useIsScreenSizeAbove('sm');
+	const { _setLocation } = usePresetContext();
+	useEffect(()=>{
+		_setLocation(PAGE_NAMES.HOME_PAGE)
+	},[_setLocation])
 	return (
 		<MainLayout isBreadCrumbs={false}>
 			<Box sx={isScreenSizeAboveSm ? 

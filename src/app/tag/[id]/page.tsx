@@ -8,6 +8,11 @@ type TagProps = {
 		id: string
 	}
 }
+
+export const dynamic = 'auto'
+export const dynamicParams = true
+export const revalidate = 60
+
 const TagContent: NextPage<TagProps> = async (props) => {
 	const [tagList] = await ssgGetFetch<TagType[]>(GetPartTagEndPoint + props.params.id);
 	return (

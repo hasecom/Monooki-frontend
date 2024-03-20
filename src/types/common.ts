@@ -39,11 +39,13 @@ export type footerCategoryLinksType = {
 */
 export type CategoryLinkProps = {
 	category:CategoryType[],
-	length?:number
+	length?:number,
+	type?:"category" | "tag"
 }
 export type TagLinkProps = {
 	category:TagType[],
-	length?:number
+	length?:number,
+	type?:"category" | "tag"
 }
 /* 
 ########

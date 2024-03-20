@@ -74,12 +74,12 @@ const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
 			</Tabs>
 			{isHovered && selectedTab === 0 && (
 				<>
-					<CategoryLink category={filteredCategies}  />
+					<CategoryLink category={filteredCategies} type="category"  />
 				</>
 			)}
 			{isHovered && selectedTab === 1 && (
 				<>
-				<CategoryLink category={filteredTags}  />
+				<CategoryLink category={filteredTags} type="tag"  />
 				</>
 			)}
 		</Box>

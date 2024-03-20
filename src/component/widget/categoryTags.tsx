@@ -15,8 +15,8 @@ const CategoryTags:NextPage<CategoryTagsProps> = ({category,headingText,length=1
 		<Box sx={{paddingY:1,paddingX:1}}>
 			<CategoryTagsTitle >{headingText}</CategoryTagsTitle>
 			{
-			(category.slice(0, 10) || []).map((tag,index)=>(
-				<CategoryTagChip key={index} label={tag.name} link={`${PAGES.TAG_RECIPE_MAP_LIST_PAGE}/${tag.attribute}`} />
+			(category.slice(0, length) || []).map((tag,index)=>(
+				<CategoryTagChip key={index} label={tag.name} link={`${PAGES.TAG_RECIPE_MAP_LIST_PAGE}${tag.attribute}`} />
 			))
 		}
 		</Box>

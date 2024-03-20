@@ -70,14 +70,22 @@ export const SingleContentGetByAttributeView = 'monooki/get/singleContentByAttri
 
 export const PAGES = {
 	HOME_PAGE:"/",
-	CATEGORY_LIST_PAGE:"/category",
+	CATEGORY_LIST_PAGE:"/category/",
 	CATEGORY_RECIPE_MAP_LIST_PAGE:"/category/",//category/category_attribute
-	TAG_LIST_PAGE:"/tag",
+	TAG_LIST_PAGE:"/tag/",
 	TAG_RECIPE_MAP_LIST_PAGE:"/tag/",//category/category_attribute
 	RECIPE_PAGE:'/recipe/',//recipe/recipe_uid
 	SINGLE_PAGE:'/single/'
 }
-
+export const PAGE_NAMES = {
+	HOME_PAGE:"HOME_PAGE",
+	CATEGORY_LIST_PAGE:"CATEGORY_LIST_PAGE",
+	CATEGORY_RECIPE_MAP_LIST_PAGE:"CATEGORY_RECIPE_MAP_LIST_PAGE",//category/category_attribute
+	TAG_LIST_PAGE:"TAG_LIST_PAGE",
+	TAG_RECIPE_MAP_LIST_PAGE:"TAG_RECIPE_MAP_LIST_PAGE",//category/category_attribute
+	RECIPE_PAGE:'RECIPE_PAGE',//recipe/recipe_uid
+	SINGLE_PAGE:'SINGLE_PAGE'
+}
 
 /**
 * 種類

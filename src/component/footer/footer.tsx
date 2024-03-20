@@ -57,7 +57,7 @@ const PcFooterGrid: NextPage<PcFooterGridTypes> = ({ headingText, links }) => {
 					<ListItem key={index}>
 						<ListItemButton component="a" key={index} href={
 							isSingleContentType(link) ?
-								`${PAGES.SINGLE_PAGE}/${link.attribute}` : `${link.link}`
+								`${PAGES.SINGLE_PAGE}${link.attribute}` : `${link.link}`
 						} >
 							<ListItemText secondary={isSingleContentType(link) ? link.title : link.label} />
 						</ListItemButton>
@@ -82,7 +82,7 @@ const SmFooter = ({ footerLinks }: FooterBodyProps) => {
 				<Grid container columns={{ xs: 4, md: 4 }}>
 					{footerLinks.map((link, index) => (
 						<Grid item key={index} sx={{ margin: '0 auto' }}>
-							<NextLink href={`${PAGES.SINGLE_PAGE}/${link.attribute}`} key={index} >
+							<NextLink href={`${PAGES.SINGLE_PAGE}${link.attribute}`} key={index} >
 								<Typography key={index} variant={'body2'}  className="hover:underline">
 									{link.title}
 								</Typography>
