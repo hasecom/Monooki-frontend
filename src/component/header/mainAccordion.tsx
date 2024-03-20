@@ -69,8 +69,6 @@ const MainAccordion:NextPage<MainAccordionProps> = ({category,tag}) => {
 			>
 				<NavTab label={Heading.Category.CategorySearch} num={0} click={()=>{router.push(PAGES.CATEGORY_LIST_PAGE)}} />
 				<NavTab label={Heading.Category.PurposeSearch} num={1} />
-				<NavTab label={Heading.Common.AboutService} num={2} />
-				<LinkTab label="Page One" link={'https://app.hasethblog.com'} />
 			</Tabs>
 			{isHovered && selectedTab === 0 && (
 				<>

@@ -35,7 +35,7 @@ const PcFooter = ({ footerLinks }: FooterBodyProps) => {
 		}}>
 			<Grid container spacing={2} justifyContent="center">
 				<Grid item xs={3}></Grid>
-				<PcFooterGrid headingText={Heading.Footer.AboutService} links={footerCategoryLinks} />
+				<PcFooterGrid headingText={Heading.Footer.CategoryList} links={footerCategoryLinks} />
 				<PcFooterGrid headingText={Heading.Footer.AboutService} links={footerLinks} />
 			</Grid>
 		</Box>

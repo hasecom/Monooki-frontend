@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
 import { usePresetContext } from '@/provider/preSetProvider';
-import {PAGE_NAMES, Service } from "@/constant/preset";
+import { PAGE_NAMES, Service } from "@/constant/preset";
 import { CategoryType, TagType } from "@/types/data";
 const AppHead = () => {
 
-	const { category, tag, recipe, singleContent,location } = usePresetContext();
+	const { category, tag, recipe, singleContent, location } = usePresetContext();
 	const pathname = usePathname();
 	const spilitRequestPathNameArray = pathname.split('/');
 	const [ogp, setOgp] = useState({
@@ -14,14 +14,14 @@ const AppHead = () => {
 		image: ""
 	});
 	useEffect(() => {
-		if(location == "") return;
+		if (location == "") return;
 		try {
-			if(location == PAGE_NAMES.HOME_PAGE){
+			if (location == PAGE_NAMES.HOME_PAGE) {
 				setOgp(prevState => ({
 					...prevState,
 					title: "MONOOKI",
 				}));
-			}else if (location == PAGE_NAMES.CATEGORY_RECIPE_MAP_LIST_PAGE) {//カテゴリ詳細
+			} else if (location == PAGE_NAMES.CATEGORY_RECIPE_MAP_LIST_PAGE) {//カテゴリ詳細
 				if (category?.loading) throw Error;
 				const categoryAttribute = spilitRequestPathNameArray[2];
 				const categoryItem = (category?.data)?.filter(item => item.attribute == categoryAttribute)
@@ -40,8 +40,8 @@ const AppHead = () => {
 				setOgp(prevState => ({
 					...prevState,
 					title: recipe?.data ? recipe.data.title + '　|　' + Service.ServiceNameEn : Service.ServiceNameEn,
-					description:recipe?.data ? recipe.data.introduction : prevState.description,
-					image:recipe?.data ? recipe.data.thumbnailUrl : prevState.image
+					description: recipe?.data ? recipe.data.introduction : prevState.description,
+					image: recipe?.data ? recipe.data.thumbnailUrl : prevState.image
 				}));
 			} else if (location == PAGE_NAMES.SINGLE_PAGE) {
 				if (!singleContent?.data) throw new Error;
@@ -64,7 +64,7 @@ const AppHead = () => {
 					...prevState,
 					title: tagList ? tagList.name + 'を含むタグ一覧　|　' + Service.ServiceNameEn : "タグ一覧　|　" + Service.ServiceNameEn
 				}));
-			}else{
+			} else {
 				setOgp(prevState => ({
 					title: "MONOOKI",
 					description: "モノ・コトを動画で紹介するサービスです。",
@@ -82,6 +82,10 @@ const AppHead = () => {
 			<meta property="og:site_name" content={ogp.title} />
 			<meta property="og:description" content={ogp.description} />
 			<meta property="og:image" content={ogp.image ? ogp.image : ""} />
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:title" content={ogp.title} />
+			<meta name="twitter:description" content={ogp.description} />
+			<meta name="twitter:image" content={ogp.image ? ogp.image : ""}  />
 			<meta name="robots" content="index, follow" />
 		</>
 	)

@@ -4,6 +4,7 @@ import { CategoryType } from "@/types/data";
 import { ssgGetFetch } from "@/util/ssgFetch";
 import CategoryRecipeList from "@/component/list/categoryRecipeList";
 import { TYPES } from "@/constant/preset";
+import { notFound } from "next/navigation";
 type CategoryProps = {
 	params: {
 		id: string
@@ -11,6 +12,7 @@ type CategoryProps = {
 }
 const CategoryName: NextPage<CategoryProps> = async (props) => {
 	const [categoryList] = await ssgGetFetch<CategoryType[]>(GetPartCategoryEndPoint + props.params.id);
+	if(!categoryList) return notFound();
 	return (
 		<>
 				<CategoryRecipeList category={categoryList} />

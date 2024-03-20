@@ -139,7 +139,7 @@ export const footerCategoryLinks = [
 		link:PAGES.CATEGORY_LIST_PAGE
 	},
 	{
-		label:'目的から探す',
+		label:'タグから探す',
 		link:''
 	}
 ]

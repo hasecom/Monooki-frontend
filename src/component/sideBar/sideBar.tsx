@@ -2,9 +2,11 @@
 import { usePresetContext } from "@/provider/preSetProvider";
 import CategoryTags from "../widget/categoryTags";
 import { tagFilterByTagType } from "@/util/formatter";
+import { PAGE_NAMES } from "@/constant/preset";
 const SideBar = () => {
-	const { tag } = usePresetContext();
+	const { tag,location } = usePresetContext();
 	if(!tag) return <></>
+	if(location == PAGE_NAMES.SINGLE_PAGE) return <></>;
 	const filteredTags = tagFilterByTagType({tags:tag.data,tagType:2})
 	return (
 		<>
