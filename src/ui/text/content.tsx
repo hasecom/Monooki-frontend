@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown';
 const MainContentText: NextPage<ReactNodeProp> = ({ children }) => {
 
 	return (
-		<Box>
+		<Box sx={{pt:3}}>
 			<ReactMarkdown>{children as string}</ReactMarkdown>
 		</Box>
 	)

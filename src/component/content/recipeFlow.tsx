@@ -8,6 +8,7 @@ import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Typography from '@mui/material/Typography';
 import { RecipeType } from '@/types/data';
+import ReactMarkdown from 'react-markdown';
 
 export type RecipeFlowProps = {
 	recipe:RecipeType
@@ -23,9 +24,9 @@ const RecipeFlow:NextPage<RecipeFlowProps> = ({recipe}) => {
 							{step.label}
 						</StepLabel>
 						<StepContent>
-							<Typography  variant="inherit">
+							<ReactMarkdown>
 								{step.description}
-							</Typography>
+								</ReactMarkdown>
 						</StepContent>
 					</Step>
 				))}
