@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
 import { usePresetContext } from '@/provider/preSetProvider';
-import { PAGE_NAMES, Service } from "@/constant/preset";
+import { PAGE_NAMES, Service,assetLinks } from "@/constant/preset";
 import { CategoryType, TagType } from "@/types/data";
 const AppHead = () => {
 
@@ -28,12 +28,14 @@ const AppHead = () => {
 				const [categoryList] = categoryItem as CategoryType[];
 				setOgp(prevState => ({
 					...prevState,
-					title: category?.data ? categoryList?.name + 'を含むカテゴリ一覧　|　' + Service.ServiceNameEn : "カテゴリ一覧　|　" + Service.ServiceNameEn
+					title: category?.data ? categoryList?.name + 'を含むカテゴリ一覧　|　' + Service.ServiceNameEn : "カテゴリ一覧　|　" + Service.ServiceNameEn,
+					description:categoryList?.name + 'を含むカテゴリの動画ページ一覧です。'
 				}));
 			} else if (location == PAGE_NAMES.CATEGORY_LIST_PAGE) {//カテゴリページ
 				setOgp(prevState => ({
 					...prevState,
-					title: 'カテゴリ一覧　|　' + Service.ServiceNameEn
+					title: 'カテゴリ一覧　|　' + Service.ServiceNameEn,
+					description:'カテゴリ一覧ページです。見つけたい動画に合うカテゴリを選びましょう。'
 				}));
 			} else if (location == PAGE_NAMES.RECIPE_PAGE) {//レシピ
 				if (!recipe?.data) throw new Error;
@@ -43,17 +45,19 @@ const AppHead = () => {
 					description: recipe?.data ? recipe.data.introduction : prevState.description,
 					image: recipe?.data ? recipe.data.thumbnailUrl : prevState.image
 				}));
-			} else if (location == PAGE_NAMES.SINGLE_PAGE) {
+			} else if (location == PAGE_NAMES.SINGLE_PAGE) {//シングルページ
 				if (!singleContent?.data) throw new Error;
 				const [viewSingleContent] = singleContent.data.filter(content => content.attribute == spilitRequestPathNameArray[2]);
 				setOgp(prevState => ({
 					...prevState,
-					title: viewSingleContent ? viewSingleContent.title + '　|　' + Service.ServiceNameEn : Service.ServiceNameEn
+					title: viewSingleContent ? viewSingleContent.title + '　|　' + Service.ServiceNameEn : Service.ServiceNameEn,
+					description:viewSingleContent?.description  ? viewSingleContent.description :""
 				}));
 			} else if (location == PAGE_NAMES.TAG_LIST_PAGE) {//タグページ
 				setOgp(prevState => ({
 					...prevState,
-					title: 'タグ一覧　|　' + Service.ServiceNameEn
+					title: 'タグ一覧　|　' + Service.ServiceNameEn,
+					description:'タグ一覧ページです。見つけたい動画に合うタグを選びましょう。'
 				}));
 			} else if (location == PAGE_NAMES.TAG_RECIPE_MAP_LIST_PAGE) {//タグ詳細
 				if (tag?.loading) throw Error;
@@ -62,7 +66,8 @@ const AppHead = () => {
 				const [tagList] = tagItem as TagType[];
 				setOgp(prevState => ({
 					...prevState,
-					title: tagList ? tagList.name + 'を含むタグ一覧　|　' + Service.ServiceNameEn : "タグ一覧　|　" + Service.ServiceNameEn
+					title: tagList ? tagList.name + 'を含むタグ一覧　|　' + Service.ServiceNameEn : "タグ一覧　|　" + Service.ServiceNameEn,
+					description:tagList?.name + 'を含むタグの動画ページ一覧です。'
 				}));
 			} else {
 				setOgp(prevState => ({
@@ -81,11 +86,11 @@ const AppHead = () => {
 			<meta property="og:title" content={ogp.title} />
 			<meta property="og:site_name" content={ogp.title} />
 			<meta property="og:description" content={ogp.description} />
-			<meta property="og:image" content={ogp.image ? ogp.image : ""} />
+			<meta property="og:image" content={ogp.image ? ogp.image : assetLinks.ogImage} />
 			<meta name="twitter:card" content="summary_large_image" />
 			<meta name="twitter:title" content={ogp.title} />
 			<meta name="twitter:description" content={ogp.description} />
-			<meta name="twitter:image" content={ogp.image ? ogp.image : ""} />
+			<meta name="twitter:image" content={ogp.image ? ogp.image : assetLinks.ogImage} />
 			<meta name="robots" content="index, follow" />
 			<link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
 			<link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png" />

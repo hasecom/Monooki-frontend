@@ -17,7 +17,6 @@ const useMediaQueryHook = (
   } else if (direction === 'only') {
     return onlyBreakPoint
   } else {
-    console.error('Invalid operator');
     return false;
   }
 };

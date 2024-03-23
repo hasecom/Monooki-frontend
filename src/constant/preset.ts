@@ -49,7 +49,10 @@ export const GetRecipeDetailByCategory = 'monooki/get/recipeCategoryMap/?id='
  * レシピ詳細取得(タグ)
 */
 export const GetRecipeDetailByTag = 'monooki/get/recipeTagMap/?id='
-
+/**
+ * レシピUidから所属タグを取得 (+Uid) 
+ */
+export const GetTagByRecipeUid = 'monooki/get/tagByRecipeUid/'
 /**
  * 
  * レシピIDリスト取得
@@ -143,3 +146,7 @@ export const footerCategoryLinks = [
 		link:''
 	}
 ]
+export const assetLinks = {
+	headerIcon:'/images/header_icon.png',
+	ogImage:'/images/site.png'
+}

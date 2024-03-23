@@ -4,6 +4,5 @@ export const ssgGetFetch = async <T>(endPoint: string): Promise<T> => {
 	const res = await fetch(url + endPoint, {
 		cache: "force-cache"
 	});
-
 	return res.json();
 }

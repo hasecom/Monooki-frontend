@@ -17,7 +17,7 @@ import { usePresetContext } from '@/provider/preSetProvider';
 import SearchInputForm from '../search/searchInput';
 import Link from 'next/link';
 import { PAGES } from '@/constant/preset';
-
+import { assetLinks } from '@/constant/preset';
 
 const MainAppBar: NextPage<MainAppBarProps> = (props) => {
 	const { category, tag } = usePresetContext();
@@ -42,7 +42,7 @@ const MainAppBar: NextPage<MainAppBarProps> = (props) => {
 							}
 						}}
 					>
-						<img src="/images/header_icon.png" alt="" />
+						<img src={assetLinks.headerIcon} alt="" />
 					</IconButton>
 				</Link>
 				<Typography

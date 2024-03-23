@@ -6,27 +6,29 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
-import Typography from '@mui/material/Typography';
 import { RecipeType } from '@/types/data';
-import ReactMarkdown from 'react-markdown';
+import { RecipeFlowItemHeading } from '@/ui/text/title';
+import MdxContent from '../mdx/mdxContent';
 
 export type RecipeFlowProps = {
-	recipe:RecipeType
+	recipe: RecipeType
 }
-const RecipeFlow:NextPage<RecipeFlowProps> = ({recipe}) => {
+const RecipeFlow: NextPage<RecipeFlowProps> = ({ recipe }) => {
 	const steps = recipe.contents ? recipe.contents : [];
 	return (
 		<Box sx={{ maxWidth: 400 }}>
-			<Stepper activeStep={-1}  orientation="vertical">
+			<Stepper activeStep={-1} orientation="vertical">
 				{steps.map((step, index) => (
 					<Step key={step.label} expanded={true} completed={false}>
 						<StepLabel>
-							{step.label}
+							<RecipeFlowItemHeading>
+								{step.label}
+							</RecipeFlowItemHeading>
 						</StepLabel>
 						<StepContent>
-							<ReactMarkdown>
+							<MdxContent>
 								{step.description}
-								</ReactMarkdown>
+							</MdxContent>
 						</StepContent>
 					</Step>
 				))}

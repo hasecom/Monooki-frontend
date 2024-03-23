@@ -22,6 +22,11 @@ const RecipeFlowHeading:NextPage<ReactNodeProp> = ({children}) => {
 		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2}}>{children}</Typography>
 	)
 }
+const RecipeFlowItemHeading:NextPage<ReactNodeProp> = ({children}) => {
+	return (
+		<Typography variant="subtitle1" sx={{fontWeight:'bold',paddingY:1}}>{children}</Typography>
+	)
+}
 const RecipeHeading:NextPage<ReactNodeProp> = ({children}) => {
 	return (
 		<Typography variant="h6" sx={{fontWeight:'bold',paddingY:2,fontSize:'1.25rem'}}>{children}</Typography>
@@ -38,4 +43,4 @@ const PageTitle:NextPage<ReactNodeProp> = ({children}) => {
 	)
 }
 
-export {CategoryTagsTitle,CategoryTitle,RecipeHeading,RecipeFlowHeading,CategoryAndTagMainTitle,RecipeListTitle,PageTitle}
+export {CategoryTagsTitle,CategoryTitle,RecipeHeading,RecipeFlowHeading,RecipeFlowItemHeading,CategoryAndTagMainTitle,RecipeListTitle,PageTitle}
