@@ -19,7 +19,7 @@ const SingleContent: NextPage<SingleContentProps> = async (props) => {
 			<Box>
 				<Box sx={{ paddingX: 1 }}>
 					<PageTitle>{singleContent.title}</PageTitle>
-					<Box sx={{ paddingX: 1, paddingY: 2 }}>
+					<Box sx={{ paddingX: 2, paddingY: 2 }}>
 						<MdxContent>{singleContent.description}</MdxContent>
 					</Box>
 				</Box>

@@ -13,19 +13,19 @@ type RecipeListProps = {
 const RecipeTagList: NextPage<RecipeListProps> = async ({ tagId }) => {
 	if(!tagId) return <>このタグは存在しません。</>;
 	const recipeList = await ssgGetFetch<RecipeType[]>(GetRecipeDetailByTag + tagId);
-	if (!recipeList) return <></>;
+	if (!recipeList || recipeList.length == 0) return <></>;
 	return (
 		<List>
 			{recipeList.map((recipe, index) => (
 				<ListItem alignItems="flex-start" key={index}>
-					<ListItemButton component="a" href={PAGES.RECIPE_PAGE + recipe.uid}>
+					<ListItemButton component="a" href={PAGES.RECIPE_PAGE + recipe?.uid}>
 						<ListItemAvatar>
-							<Avatar alt={recipe.title} src={recipe.thumbnailUrl} variant="rounded"
+							<Avatar alt={recipe?.title} src={recipe?.thumbnailUrl} variant="rounded"
 								sx={{ width: [50, 70], height: [50, 70] }}
 							/>
 						</ListItemAvatar>
 						<ListItemText sx={{ paddingX: 2 }}>
-							<RecipeListTitle>{recipe.title}</RecipeListTitle>
+							<RecipeListTitle>{recipe?.title}</RecipeListTitle>
 						</ListItemText>
 					</ListItemButton>
 				</ListItem>

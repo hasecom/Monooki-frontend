@@ -9,20 +9,21 @@ import { GetRecipeDetailByCategory, PAGES } from '@/constant/preset';
 import useFetchData from '@/hooks/fetch';
 import { RecipeType } from '@/types/data';
 import { useRouter } from 'next/navigation';
-
+import { NextPage } from 'next';
 const useStyles = makeStyles((theme) => ({
 	boldTitle: {
 		fontWeight: 'bold',
 	},
 }));
-const TopList = () => {
+type TopListProps = {
+	categoryId:number
+}
+const TopList:NextPage<TopListProps> = ({categoryId}) => {
 	const router = useRouter();
 	const classes = useStyles();
-	const categoryId = 25;
-
 	const { data: recipeData, loading: recipeLoading, error: recipeError } = useFetchData<RecipeType[]>(GetRecipeDetailByCategory + categoryId, false);
 	if (recipeLoading || !recipeData) return <>
-		<Box sx={{ pt: 0.5 }}><Skeleton width={110} height={350} /></Box></>
+		<Box sx={{ pt: 0.5 }}><></></Box></>
 	return (
 		<>
 			<Box sx={{
@@ -57,15 +58,3 @@ const TopList = () => {
 }
 export default TopList;
 
-const itemData = [
-	{
-		img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-		title: 'LINEのサムネイルの変更の仕方',
-		date: '2023年2月12日',
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-		title: 'LINEの音楽の設定方法',
-		date: '2022年2月1日',
-	}
-];

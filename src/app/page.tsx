@@ -6,7 +6,8 @@ import { Box } from "@mui/material";
 import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 import {  usePresetContext } from "@/provider/preSetProvider";
 import { useEffect } from "react";
-import { PAGE_NAMES } from "@/constant/preset";
+import { PAGE_NAMES,TYPES } from "@/constant/preset";
+
 export default function Home() {
 	const isScreenSizeAboveSm = useIsScreenSizeAbove('sm');
 	const { _setLocation } = usePresetContext();
@@ -20,7 +21,7 @@ export default function Home() {
 			{ paddingY: "3vh" }
 		}
 			>
-				<TopList />
+				<TopList categoryId={TYPES.CATEGORY.CATEGORY_ID.LINE} />
 				<CategoryTabs />
 			</Box>
 		</MainLayout>

@@ -15,7 +15,7 @@ const RecipeVideo:NextPage<RecipeVideoProps> = ({videoUrl}) => {
 				<iframe 
 					width={useIsScreenSizeAbove('sm')? "560" : width } 
 					height={useIsScreenSizeAbove('sm')? "560" : width } 
-					src={videoUrl}
+					src={`${videoUrl}?rel=0`}
 					title="YouTube video player" 
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
 					>
