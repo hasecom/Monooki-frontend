@@ -4,7 +4,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import "./globals.css";
 import { PreSetProvider } from "@/provider/preSetProvider";
 import AppHead from "@/component/head/appHead";
-
 const inter = Inter({ subsets: ["latin"] });
 import { GoogleAnalytics } from "@next/third-parties/google";
 

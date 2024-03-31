@@ -1,5 +1,6 @@
 export const Service = {
-	ServiceNameEn:"MONOOKI"
+	ServiceNameEn:"MONOOKI",
+	ServiceLink:"https://mono-oki.com"
 }
 export const Heading = {
 	Category:{

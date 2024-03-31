@@ -1,15 +1,19 @@
-import {  Service, assetLinks } from "@/constant/preset";
-import HomeView from "./_home";
+import { NextPage } from "next";
+import { LayoutProps } from "@/types/common";
 import { Metadata } from "next";
-export default function Home() {
+import { Service, assetLinks } from "@/constant/preset";
+
+const TagParentLayout:NextPage<LayoutProps> = ({children}) => {
 	return (
 		<>
-			<HomeView />
+		{children}
 		</>
-	);
+	)
 }
-const metaTitle = 'MONOOKI';
-const metaDescription = 'モノ・コトを動画で紹介するサービスです。"';
+export default TagParentLayout;
+
+const metaTitle = 'タグ一覧　|　' + Service.ServiceNameEn;
+const metaDescription = 'タグ一覧ページです。見つけたい動画に合うタグを選びましょう。';
 export const metadata: Metadata = {
 	metadataBase: new URL(Service.ServiceLink),
 	title: metaTitle,
@@ -39,4 +43,5 @@ export const metadata: Metadata = {
 			alt: Service.ServiceNameEn,
 		},
 	}
+
 };

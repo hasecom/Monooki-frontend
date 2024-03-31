@@ -1,4 +1,4 @@
-import { GetRecipeIdList, GetTagByRecipeUid } from "@/constant/preset";
+import { GetRecipeIdList, GetTagByRecipeUid, Service, assetLinks } from "@/constant/preset";
 import { NextPage } from "next";
 import { ssgGetFetch } from "@/util/ssgFetch";
 import RecipeGroup from "@/component/content/recipeGroup";
@@ -31,4 +31,39 @@ export const generateStaticParams = async () => {
 	return await recipeIdList.map((recipe) => ({
 		id: recipe.uid.toString()
 	}));
+}
+export const generateMetadata = async (props:RecipeProps) =>  {
+	const recipeUid =  props.params.id;
+	const recipe = await ssgGetFetch<RecipeType>(GetRecipeDetail + recipeUid);
+	const metaDescription = (recipe.introduction?recipe.introduction:"").replace(/[#`*_-]/g, '').substring(0,50);
+  return {
+		metadataBase: new URL(Service.ServiceLink),
+    title: recipe.title + '　|　' + Service.ServiceNameEn ,
+		description:metaDescription,
+		openGraph: {
+			type: "website",
+			title: recipe.title + '　|　' + Service.ServiceNameEn ,
+			description:metaDescription,
+			siteName: Service.ServiceNameEn,
+			url: "",
+			images: {
+				url: recipe.thumbnailUrl,
+				type: "image/png",
+				width: 600,
+				height: 660,
+				alt:Service.ServiceNameEn,
+			},
+		},
+		twitter: {
+			title:recipe.title + '　|　' + Service.ServiceNameEn,
+			description:metaDescription,
+			images: {
+				url: recipe.thumbnailUrl,
+				type: "image/png",
+				width: 600,
+				height:600,
+				alt: Service.ServiceNameEn,
+			},
+		}
+  };
 }

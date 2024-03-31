@@ -5,6 +5,7 @@ import MainLayout from "@/layout/mainLayout";
 import { usePresetContext } from "@/provider/preSetProvider";
 import { useEffect } from "react";
 import { PAGE_NAMES } from "@/constant/preset";
+
 const SingleContentLayout: NextPage<LayoutProps> = ({ children }) => {
 	const { _setLocation } = usePresetContext();
 	useEffect(()=>{

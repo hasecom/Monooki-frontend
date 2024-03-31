@@ -6,6 +6,7 @@ import { useIsScreenSizeAbove } from "@/hooks/useMediaQuery";
 import { usePresetContext } from "@/provider/preSetProvider";
 import { useEffect } from "react";
 import { PAGE_NAMES } from "@/constant/preset";
+
 const  Category = () => {
 	const { _setLocation } = usePresetContext();
 	useEffect(()=>{
