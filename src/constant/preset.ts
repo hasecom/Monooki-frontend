@@ -111,7 +111,8 @@ export const TYPES = {
 		CATEGORY_SUB_SUB_CATEGORY:3,
 		CATEGORY_ID:{
 			LINE:25,
-			Instagram:22
+			Instagram:22,
+			X:21
 		}
 	},
 	TAG:{

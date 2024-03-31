@@ -21,7 +21,9 @@ const HomeView = () => {
 			{ paddingY: "3vh" }
 		}
 		>
-			<TopList categoryId={TYPES.CATEGORY.CATEGORY_ID.LINE} />
+			<TopList categoryId={TYPES.CATEGORY.CATEGORY_ID.LINE}  categoryTitle="LINE" />
+			<TopList categoryId={TYPES.CATEGORY.CATEGORY_ID.Instagram} categoryTitle="Instagram" />
+			<TopList categoryId={TYPES.CATEGORY.CATEGORY_ID.X} categoryTitle="X" />
 			<CategoryTabs />
 		</Box>
 	</MainLayout>
