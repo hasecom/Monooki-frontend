@@ -1,12 +1,11 @@
 import React from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import { RecipeType } from '@/types/data'
-import {
-	SelectedSnapDisplay,
+import { 
 	useSelectedSnapDisplay
 } from './EmblaCarouselSelectedSnapDisplay'
 import useEmblaCarousel from 'embla-carousel-react'
-import { ImageListItem, ImageListItemBar } from '@mui/material'
+import { ImageListItem } from '@mui/material'
 import { useRouter } from 'next/navigation';
 import { PAGES } from '@/constant/preset'
 import { makeStyles } from '@material-ui/core';
@@ -34,7 +33,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 				<div className="embla__container">
 					{slides.map((recipe, index) => (
 						<div className="embla__slide" key={index}>
-							<ImageListItem key={index}>
+							<ImageListItem key={index} sx={{cursor:'pointer'}}>
 								<img
 									srcSet={`${recipe.thumbnailUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
 									src={`${recipe.thumbnailUrl}?w=248&fit=crop&auto=format`}
