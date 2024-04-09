@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install
+          npm install --legacy-peer-deps
 
       - name: Configure Git Identity
         run: |
@@ -38,7 +38,7 @@ jobs:
         run: |
          git remote add origin https://github.com/hasecom/Monooki-ssg.git
          git add .
-         git commit -m "github Actions"
+         git commit -m "github Actions　"
          git push -f origin HEAD:main
         env:
           token: ${{ secrets.PAT_TOKEN }} 
