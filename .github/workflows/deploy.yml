@@ -40,6 +40,11 @@ jobs:
          cp -r out/* ssg-repository/
          cd ssg-repository
          git init
+         git config user.email "${{ secrets.GIT_EMAIL }}"
+         git config user.name "${{ secrets.GIT_USERNAME }}"
+         git remote add origin https://github.com/hasecom/Monooki-ssg.git
          git add .
-         git commit -m "Deploy static files via GitHub Actions"
-         git push -f https://${{ secrets.PAT_TOKEN }}@github.com/hasecom/Monooki-ssg.git main
+         git commit -m "github Actions　"
+         git push -f origin HEAD:main
+        env:
+          token: ${{ secrets.PAT_TOKEN }} 
