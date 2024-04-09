@@ -36,6 +36,8 @@ jobs:
 
       - name: Push to Swap Branch
         run: |
+         ls
+         pwd
          git remote add origin https://github.com/hasecom/Monooki-ssg.git
          git add .
          git commit -m "github Actions　"
