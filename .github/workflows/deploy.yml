@@ -40,6 +40,7 @@ jobs:
          cp -r out/* ssg-repository/
          cd ssg-repository
          git init
+         git config --global init.defaultBranch main
          git config user.email "${{ secrets.GIT_EMAIL }}"
          git config user.name "${{ secrets.GIT_USERNAME }}"
          git remote add origin https://github.com/hasecom/Monooki-ssg.git
