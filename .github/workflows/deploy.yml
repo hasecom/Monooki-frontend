@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 18.19.0 
 
-      - name: Install Dependencies
+      - name: Install Dependencies(legacy peer deps)
         run: |
           npm install --legacy-peer-deps
 
