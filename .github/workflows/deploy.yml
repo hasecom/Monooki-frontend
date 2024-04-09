@@ -40,9 +40,7 @@ jobs:
          cp -r out/* ssg-repository/
          cd ssg-repository
          git init
-         git branch -a
-         git checkout master
-         git checkout main
+         git checkout -b
          git merge --force master
          git config user.email "${{ secrets.GIT_EMAIL }}"
          git config user.name "${{ secrets.GIT_USERNAME }}"
