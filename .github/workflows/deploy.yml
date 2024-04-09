@@ -36,11 +36,10 @@ jobs:
 
       - name: Push to Swap Tags
         run: |
-         ls
-         pwd
-         git remote add origin https://github.com/hasecom/Monooki-ssg.git
+         mkdir ssg-repository
+         cp -r out/* ssg-repository/
+         cd ssg-repository
+         git init
          git add .
-         git commit -m "github Actions　"
-         git push -f origin HEAD:main
-        env:
-          token: ${{ secrets.PAT_TOKEN }} 
+         git commit -m "Deploy static files via GitHub Actions"
+         git push -f https://${{ secrets.PAT_TOKEN }}@github.com/hasecom/Monooki-ssg.git main
