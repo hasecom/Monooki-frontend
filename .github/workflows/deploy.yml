@@ -34,7 +34,7 @@ jobs:
         run: |
           npm run build
 
-      - name: Push to Swap Tags
+      - name: Push to Swap Tags 
         run: |
          mkdir ssg-repository
          cp -r out/* ssg-repository/
