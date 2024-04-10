@@ -43,9 +43,7 @@ jobs:
          git checkout -b main
          git config user.email "${{ secrets.GIT_EMAIL }}"
          git config user.name "${{ secrets.GIT_USERNAME }}"
-         git remote add origin https://github.com/hasecom/Monooki-ssg.git
+         git remote add origin https://${{ secrets.PAT_TOKEN }}@github.com/${{ secrets.GIT_USERNAME }}/Monooki-ssg.git
          git add .
-         git commit -m "github Actions　"
+         git commit -m "github Actions"
          git push -f origin HEAD:main
-        env:
-          token: ${{ secrets.PAT_TOKEN }} 
