@@ -45,5 +45,5 @@ jobs:
          git config user.name "${{ secrets.GIT_USERNAME }}"
          git remote add origin https://${{ secrets.PAT_TOKEN }}@github.com/${{ secrets.GIT_USERNAME }}/Monooki-ssg.git
          git add .
-         git commit -m "github Actions"
+         git commit -m "${{github.ref}} - ${{github.event_name}}"
          git push -f origin HEAD:main
