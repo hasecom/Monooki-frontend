@@ -58,5 +58,5 @@ jobs:
          script: |
            cd /home/users/0/angry.jp-hasecom/web/monooki/
            rm -rf front
-           git clone --depth=1 https://hasecom:${{ secrets.PAT_SECRET }}@github.com/hasecom/Monooki-ssg.git -b main front
+           git clone --depth=1 https://hasecom:${{ secrets.PAT_TOKEN }}@github.com/hasecom/Monooki-ssg.git -b main front
            ls -la
