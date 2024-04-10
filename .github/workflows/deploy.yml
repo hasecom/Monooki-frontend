@@ -60,4 +60,4 @@ jobs:
            git remote remove origin
            git remote add origin https://${{ secrets.PAT_TOKEN }}@github.com/hasecom/Monooki-ssg.git
            git fetch origin main
-           git reset --hard origin/main
+           git reset --hard origin/HEAD
